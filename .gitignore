@@ -144,3 +144,5 @@ out
 gen
 build
 rebel.xml
+
+**/application.properties
