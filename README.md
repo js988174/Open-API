@@ -9,4 +9,5 @@
 
 
 ## TODO List
-* API 테스트
+* API 연결 
+* vue 메인 화면 작성
