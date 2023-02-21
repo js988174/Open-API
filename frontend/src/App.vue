@@ -10,7 +10,23 @@ export default {
   name: 'App',
   components: {
     HelloWorld
-  }
+  },
+  data() {
+    return {
+      dataList: "",
+    };
+  },
+  mounted() {
+    this.dataList();
+  },
+  methods: {
+    get() {
+      this.axios.get("/test").then((response) => {
+        this.dataList = response.data;
+        console.log(this.dataList);
+      });
+    },
+  },
 }
 </script>
 

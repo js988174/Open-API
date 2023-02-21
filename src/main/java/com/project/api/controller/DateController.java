@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class DateController {
 
     @GetMapping("/test")
-    public MemberVo memberVo(){
-        MemberVo memberVo = new MemberVo(1,"김경선");
-        return memberVo;
+    public String memberVo(){
+//        MemberVo memberVo = new MemberVo(1,"김경선");
+        return "123213";
     }
 }
