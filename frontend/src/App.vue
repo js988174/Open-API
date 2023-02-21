@@ -21,10 +21,13 @@ export default {
   },
   methods: {
     get() {
-      this.axios.get("/test").then((response) => {
+      console.log("GET");
+      this.$axios.get('http://localhost:8086/api').then((response) => {
         this.dataList = response.data;
         console.log(this.dataList);
-      });
+      }).catch(function(err){
+            console.log("error: ", err);
+          });
     },
   },
 }
