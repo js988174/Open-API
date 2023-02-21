@@ -17,7 +17,7 @@ export default {
     };
   },
   mounted() {
-    this.dataList();
+    this.get();
   },
   methods: {
     get() {
