@@ -22,7 +22,7 @@ export default {
   methods: {
     get() {
       console.log("GET");
-      this.$axios.get('http://localhost:8086/api/test').then((response) => {
+      this.$axios.get('/test').then((response) => {
         this.dataList = response.data;
         console.log(this.dataList);
       }).catch(function(err){
