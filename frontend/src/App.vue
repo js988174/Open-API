@@ -5,6 +5,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+
 export default {
   name: 'App',
   components: {
@@ -20,9 +21,7 @@ export default {
   },
   methods: {
     get() {
-        this.$axios.get("localhost:8086/test").then((response) => {
-        console.log("아이씨")
-        console.log(response.status)
+      this.axios.get("/test").then((response) => {
         this.dataList = response.data;
         console.log(this.dataList);
       });
