@@ -21,7 +21,8 @@ export default {
   },
   methods: {
     get() {
-      this.axios.get("/test").then((response) => {
+      console.log("GET");
+      this.$axios.get('localhost:8080/test').then((response) => {
         this.dataList = response.data;
         console.log(this.dataList);
       });
