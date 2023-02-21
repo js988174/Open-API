@@ -57,6 +57,7 @@ public class DateController {
     @CrossOrigin(origins = "http://localhost:8080/")
     public MemberVo memberVo() throws IOException {
         MemberVo memberVo = new MemberVo(1,"김경선");
+        System.out.println("컨트롤러들어옴");
         return memberVo;
     }
 }
