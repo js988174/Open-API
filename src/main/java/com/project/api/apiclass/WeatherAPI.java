@@ -1,7 +1,9 @@
 package com.project.api.apiclass;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.json.JSONParser;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.springframework.boot.json.JsonParser;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -46,7 +48,9 @@ public class WeatherAPI {
         conn.disconnect();
         System.out.println(sb.toString());
 
-        return sb.toString();
+        JSONParser jsonParser = new JSONParser();
+        JSONObject jsonObject =(JSONObject) jsonParser.parse(sb.toString());
+        return jsonObject;
     }
 
 }
