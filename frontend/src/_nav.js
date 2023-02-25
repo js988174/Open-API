@@ -39,6 +39,11 @@ export default [
         name: "Error 500",
         to: "/pages/500",
       },
+      {
+        component: "CNavItem",
+        name: "weather",
+        to: "/pages/weather",
+      },
     ],
   },
   {
