@@ -34,7 +34,6 @@
             <CIcon class="mx-2" icon="cil-envelope-open" size="lg" />
           </CNavLink>
         </CNavItem>
-        <AppHeaderDropdownAccnt />
       </CHeaderNav>
     </CContainer>
     <CHeaderDivider />
@@ -46,13 +45,11 @@
 
 <script>
 import AppBreadcrumb from "./AppBreadcrumb";
-import AppHeaderDropdownAccnt from "./AppHeaderDropdownAccnt";
 import { logo } from "@/assets/brand/logo";
 export default {
   name: "AppHeader",
   components: {
     AppBreadcrumb,
-    AppHeaderDropdownAccnt,
   },
   setup() {
     return {
