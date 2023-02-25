@@ -24,7 +24,7 @@ public class WeatherAPI {
         urlBuilder.append("&" + URLEncoder.encode("pageNo",enc) + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
         urlBuilder.append("&" + URLEncoder.encode("numOfRows",enc) + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
         urlBuilder.append("&" + URLEncoder.encode("dataType",enc) + "=" + URLEncoder.encode("JSON", "UTF-8")); /*요청자료형식(XML/JSON) Default: XML*/
-        urlBuilder.append("&" + URLEncoder.encode("base_date",enc) + "=" + URLEncoder.encode("20230221", "UTF-8")); /*‘21년 6월 28일발표*/
+        urlBuilder.append("&" + URLEncoder.encode("base_date",enc) + "=" + URLEncoder.encode("20230225", "UTF-8")); /*‘21년 6월 28일발표*/
         urlBuilder.append("&" + URLEncoder.encode("base_time",enc) + "=" + URLEncoder.encode("0500", "UTF-8")); /*05시 발표*/
         urlBuilder.append("&" + URLEncoder.encode("nx",enc) + "=" + URLEncoder.encode("55", "UTF-8")); /*예보지점의 X 좌표값*/
         urlBuilder.append("&" + URLEncoder.encode("ny",enc) + "=" + URLEncoder.encode("127", "UTF-8")); /*예보지점의 Y 좌표값*/
