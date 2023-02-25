@@ -31,17 +31,12 @@ export default [
       },
       {
         component: "CNavItem",
-        name: "Error 404",
-        to: "/pages/404",
+        name: "Covid",
+        to: "/pages/covid",
       },
       {
         component: "CNavItem",
-        name: "Error 500",
-        to: "/pages/500",
-      },
-      {
-        component: "CNavItem",
-        name: "weather",
+        name: "Weather",
         to: "/pages/weather",
       },
     ],
