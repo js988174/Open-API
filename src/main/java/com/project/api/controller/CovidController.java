@@ -1,5 +1,8 @@
 package com.project.api.controller;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +19,7 @@ public class CovidController {
 
 
     @GetMapping("/covid")
-    public Object covid() throws IOException {
+    public Object covid() throws Exception {
 
         String apiURL = "https://api.corona-19.kr/korea/";
         String authKey = "berRulMsJy2PTaBXSYv1j9hExcnIdQqDp";
@@ -45,7 +48,10 @@ public class CovidController {
         conn.disconnect();
         result = sb.toString();
 
-        return result;
+        JSONParser jsonParser = new JSONParser();
+        JSONObject jsonObject =(JSONObject) jsonParser.parse(sb.toString());
+
+        return jsonObject;
     }
 
 }
