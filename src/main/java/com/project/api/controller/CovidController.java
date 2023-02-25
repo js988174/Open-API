@@ -18,20 +18,11 @@ public class CovidController {
     @GetMapping("/covid")
     public Object covid() throws IOException {
 
-        String apiURL = "http://apis.data.go.kr/1352000/ODMS_COVID_04/callCovid04Api";
-        String authKey = "CGrt6129vP2mSoNsg73Pp1RyTPaHgOZC11sSwEW5Tgs9%2FWSVG5B%2B8dyZ4ICBhX%2BuXECar6OulkDMbu0XQ3e83A%3D%3D";
-        String pageNo = "1";
-        String numOfRows = "10";
-        String std_day = "2021-12-15";
-        String gubun = "경기";
+        String apiURL = "https://api.corona-19.kr/korea/";
+        String authKey = "berRulMsJy2PTaBXSYv1j9hExcnIdQqDp";
         String result = "";
 
-        String urlBuilder = apiURL + "?" + URLEncoder.encode("serviceKey", StandardCharsets.UTF_8) + "=" + authKey +
-                "&" + URLEncoder.encode("pageNo", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(pageNo) +
-                "&" + URLEncoder.encode("numOfRows", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(numOfRows) +
-                "&" + URLEncoder.encode("std_day", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(std_day, StandardCharsets.UTF_8) +
-                "&" + URLEncoder.encode("gubun", StandardCharsets.UTF_8) + "=" + URLEncoder.encode(gubun);
-
+        String urlBuilder = apiURL + "?" + URLEncoder.encode("serviceKey", StandardCharsets.UTF_8) + "=" + authKey;
 
         URL url = new URL(urlBuilder);
         System.out.println(url);
