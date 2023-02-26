@@ -25,10 +25,7 @@ public class WeatherController {
     private final WeatherAPI weatherAPI;
 
     @GetMapping("/test")
-    @CrossOrigin(origins = "http://localhost:8080/")
     public Object test() throws Exception {
-
-
         return weatherAPI.test();
     }
 

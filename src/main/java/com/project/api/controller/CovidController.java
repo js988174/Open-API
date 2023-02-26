@@ -16,7 +16,6 @@ import java.nio.charset.StandardCharsets;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin("http://localhost:8082")
 public class CovidController {
 
 
