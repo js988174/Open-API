@@ -172,9 +172,9 @@
 </template>
 
 <script>
-import { CChart } from "@coreui/vue-chartjs";
+import { CChart } from '@coreui/vue-chartjs'
 export default {
-  name: "WidgetsStatsD",
+  name: 'WidgetsStatsD',
   components: {
     CChart,
   },
@@ -205,11 +205,11 @@ export default {
           display: false,
         },
       },
-    };
+    }
 
     return {
       options,
-    };
+    }
   },
-};
+}
 </script>

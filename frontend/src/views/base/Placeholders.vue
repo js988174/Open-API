@@ -175,13 +175,13 @@
 </template>
 
 <script>
-import VueImg from "@/assets/images/vue.jpg";
+import VueImg from '@/assets/images/vue.jpg'
 export default {
-  name: "Placeholders",
+  name: 'Placeholders',
   setup() {
     return {
       VueImg,
-    };
+    }
   },
-};
+}
 </script>

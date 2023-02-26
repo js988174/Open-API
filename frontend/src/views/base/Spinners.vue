@@ -125,6 +125,6 @@
 
 <script>
 export default {
-  name: "Spinners",
-};
+  name: 'Spinners',
+}
 </script>

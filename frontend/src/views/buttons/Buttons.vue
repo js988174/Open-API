@@ -437,6 +437,6 @@
 
 <script>
 export default {
-  name: "Buttons",
-};
+  name: 'Buttons',
+}
 </script>

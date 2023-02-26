@@ -358,6 +358,6 @@
 
 <script>
 export default {
-  name: "ListGroups",
-};
+  name: 'ListGroups',
+}
 </script>

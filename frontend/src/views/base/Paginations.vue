@@ -176,6 +176,6 @@
 
 <script>
 export default {
-  name: "Paginations",
-};
+  name: 'Paginations',
+}
 </script>

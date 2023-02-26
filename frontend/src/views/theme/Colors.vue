@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import ColorTheme from "./ColorTheme";
+import ColorTheme from './ColorTheme'
 export default {
-  name: "Colors",
+  name: 'Colors',
   components: { ColorTheme },
-};
+}
 </script>

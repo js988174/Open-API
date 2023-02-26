@@ -347,6 +347,6 @@
 
 <script>
 export default {
-  name: "Navs",
-};
+  name: 'Navs',
+}
 </script>

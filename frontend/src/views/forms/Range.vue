@@ -82,6 +82,6 @@
 
 <script>
 export default {
-  name: "Range",
-};
+  name: 'Range',
+}
 </script>

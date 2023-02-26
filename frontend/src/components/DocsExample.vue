@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: "DocsExample",
+  name: 'DocsExample',
   props: {
     href: {
       type: String,
@@ -32,11 +32,11 @@ export default {
     },
   },
   setup(props) {
-    const url = `https://coreui.io/vue/docs/${props.href}`;
+    const url = `https://coreui.io/vue/docs/${props.href}`
 
     return {
       url,
-    };
+    }
   },
-};
+}
 </script>

@@ -25,6 +25,6 @@
 
 <script>
 export default {
-  name: "Page500",
-};
+  name: 'Page500',
+}
 </script>

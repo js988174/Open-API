@@ -246,6 +246,6 @@
 
 <script>
 export default {
-  name: "Typography",
-};
+  name: 'Typography',
+}
 </script>

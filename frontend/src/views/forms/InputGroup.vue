@@ -513,6 +513,6 @@
 
 <script>
 export default {
-  name: "InputGroup",
-};
+  name: 'InputGroup',
+}
 </script>

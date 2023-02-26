@@ -90,6 +90,6 @@
 
 <script>
 export default {
-  name: "Badges",
-};
+  name: 'Badges',
+}
 </script>
