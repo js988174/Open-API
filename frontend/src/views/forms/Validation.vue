@@ -478,39 +478,39 @@
 
 <script>
 export default {
-  name: "Validation",
+  name: 'Validation',
   data: () => {
     return {
       validatedCustom01: null,
       validatedDefault01: null,
       validatedTooltip01: null,
-    };
+    }
   },
   methods: {
     handleSubmitCustom01(event) {
-      const form = event.currentTarget;
+      const form = event.currentTarget
       if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
+        event.preventDefault()
+        event.stopPropagation()
       }
-      this.validatedCustom01 = true;
+      this.validatedCustom01 = true
     },
     handleSubmitDefault01(event) {
-      const form = event.currentTarget;
+      const form = event.currentTarget
       if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
+        event.preventDefault()
+        event.stopPropagation()
       }
-      this.validatedDefault01 = true;
+      this.validatedDefault01 = true
     },
     handleSubmitTooltip01(event) {
-      const form = event.currentTarget;
+      const form = event.currentTarget
       if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
+        event.preventDefault()
+        event.stopPropagation()
       }
-      this.validatedTooltip01 = true;
+      this.validatedTooltip01 = true
     },
   },
-};
+}
 </script>

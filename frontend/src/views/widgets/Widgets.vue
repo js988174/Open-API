@@ -652,12 +652,12 @@
 </template>
 
 <script>
-import { getStyle } from "@coreui/utils";
-import { CChart } from "@coreui/vue-chartjs";
-import WidgetsStatsA from "./WidgetsStatsTypeA.vue";
-import WidgetsStatsD from "./WidgetsStatsTypeD.vue";
+import { getStyle } from '@coreui/utils'
+import { CChart } from '@coreui/vue-chartjs'
+import WidgetsStatsA from './WidgetsStatsTypeA.vue'
+import WidgetsStatsD from './WidgetsStatsTypeD.vue'
 export default {
-  name: "Widgets",
+  name: 'Widgets',
   components: {
     CChart,
     WidgetsStatsA,
@@ -666,21 +666,21 @@ export default {
   setup() {
     const widgetStatsE = {
       labels: [
-        "M",
-        "T",
-        "W",
-        "T",
-        "F",
-        "S",
-        "S",
-        "M",
-        "T",
-        "W",
-        "T",
-        "F",
-        "S",
-        "S",
-        "M",
+        'M',
+        'T',
+        'W',
+        'T',
+        'F',
+        'S',
+        'S',
+        'M',
+        'T',
+        'W',
+        'T',
+        'F',
+        'S',
+        'S',
+        'M',
       ],
       optionsBar: {
         maintainAspectRatio: false,
@@ -722,19 +722,19 @@ export default {
           },
         },
       },
-    };
+    }
 
     return {
       getStyle,
       widgetStatsE,
       widgetProgressIconItems: [
-        { color: "primary", icon: "cil-puzzle" },
-        { color: "success", icon: "cil-speedometer" },
-        { color: "danger", icon: "cil-cursor" },
-        { color: "info", icon: "cil-drop" },
-        { color: "secondary", icon: "cil-pencil" },
+        { color: 'primary', icon: 'cil-puzzle' },
+        { color: 'success', icon: 'cil-speedometer' },
+        { color: 'danger', icon: 'cil-cursor' },
+        { color: 'info', icon: 'cil-drop' },
+        { color: 'secondary', icon: 'cil-pencil' },
       ],
-    };
+    }
   },
-};
+}
 </script>

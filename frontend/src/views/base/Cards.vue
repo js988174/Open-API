@@ -970,13 +970,13 @@
 </template>
 
 <script>
-import VueImg from "@/assets/images/vue.jpg";
+import VueImg from '@/assets/images/vue.jpg'
 export default {
-  name: "Cards",
+  name: 'Cards',
   setup() {
     return {
       VueImg,
-    };
+    }
   },
-};
+}
 </script>

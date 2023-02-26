@@ -418,6 +418,6 @@
 
 <script>
 export default {
-  name: "ButtonGroups",
-};
+  name: 'ButtonGroups',
+}
 </script>

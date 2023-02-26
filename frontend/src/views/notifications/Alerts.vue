@@ -146,11 +146,11 @@
 
 <script>
 export default {
-  name: "Alerts",
+  name: 'Alerts',
   methods: {
     alert: function () {
-      alert("👋 Well, hi there! Thanks for dismissing me.");
+      alert('👋 Well, hi there! Thanks for dismissing me.')
     },
   },
-};
+}
 </script>

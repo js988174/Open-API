@@ -52,6 +52,6 @@
 
 <script>
 export default {
-  name: "Register",
-};
+  name: 'Register',
+}
 </script>

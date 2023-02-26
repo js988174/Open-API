@@ -4,8 +4,8 @@
 
 <script>
 export default {
-  name: "Weather",
-};
+  name: 'Weather',
+}
 </script>
 
 <style></style>

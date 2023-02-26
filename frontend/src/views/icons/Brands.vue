@@ -24,18 +24,18 @@
 </template>
 
 <script>
-import { brandSet } from "@coreui/icons";
+import { brandSet } from '@coreui/icons'
 export default {
-  name: "CoreUIIcons",
+  name: 'CoreUIIcons',
   setup() {
     const toKebabCase = (str) =>
-      str.replace(/([a-z])([A-Z0-9])/g, "$1-$2").toLowerCase();
-    const icons = brandSet;
+      str.replace(/([a-z])([A-Z0-9])/g, '$1-$2').toLowerCase()
+    const icons = brandSet
 
     return {
       icons,
       toKebabCase,
-    };
+    }
   },
-};
+}
 </script>

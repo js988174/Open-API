@@ -79,6 +79,6 @@
 
 <script>
 export default {
-  name: "Popovers",
-};
+  name: 'Popovers',
+}
 </script>

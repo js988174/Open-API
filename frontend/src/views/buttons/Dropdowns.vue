@@ -356,6 +356,6 @@
 
 <script>
 export default {
-  name: "Dropdowns",
-};
+  name: 'Dropdowns',
+}
 </script>

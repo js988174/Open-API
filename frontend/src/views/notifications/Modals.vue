@@ -49,7 +49,7 @@
               color="primary"
               @click="
                 () => {
-                  visibleLiveDemo = true;
+                  visibleLiveDemo = true
                 }
               "
               >Launch demo modal</CButton
@@ -58,7 +58,7 @@
               :visible="visibleLiveDemo"
               @close="
                 () => {
-                  visibleLiveDemo = false;
+                  visibleLiveDemo = false
                 }
               "
             >
@@ -66,7 +66,7 @@
                 dismiss
                 @close="
                   () => {
-                    visibleLiveDemo = false;
+                    visibleLiveDemo = false
                   }
                 "
               >
@@ -80,7 +80,7 @@
                   color="secondary"
                   @click="
                     () => {
-                      visibleLiveDemo = false;
+                      visibleLiveDemo = false
                     }
                   "
                 >
@@ -110,7 +110,7 @@
               color="primary"
               @click="
                 () => {
-                  visibleStaticBackdropDemo = true;
+                  visibleStaticBackdropDemo = true
                 }
               "
               >Launch demo modal</CButton
@@ -120,7 +120,7 @@
               :visible="visibleStaticBackdropDemo"
               @close="
                 () => {
-                  visibleStaticBackdropDemo = false;
+                  visibleStaticBackdropDemo = false
                 }
               "
             >
@@ -128,7 +128,7 @@
                 dismiss
                 @close="
                   () => {
-                    visibleStaticBackdropDemo = false;
+                    visibleStaticBackdropDemo = false
                   }
                 "
               >
@@ -142,7 +142,7 @@
                   color="secondary"
                   @click="
                     () => {
-                      visibleStaticBackdropDemo = false;
+                      visibleStaticBackdropDemo = false
                     }
                   "
                 >
@@ -171,7 +171,7 @@
               color="primary"
               @click="
                 () => {
-                  visibleScrollingLongContentDemo = true;
+                  visibleScrollingLongContentDemo = true
                 }
               "
               >Launch demo modal</CButton
@@ -180,7 +180,7 @@
               :visible="visibleScrollingLongContentDemo"
               @close="
                 () => {
-                  visibleScrollingLongContentDemo = false;
+                  visibleScrollingLongContentDemo = false
                 }
               "
             >
@@ -188,7 +188,7 @@
                 dismiss
                 @close="
                   () => {
-                    visibleScrollingLongContentDemo = false;
+                    visibleScrollingLongContentDemo = false
                   }
                 "
               >
@@ -304,7 +304,7 @@
               color="primary"
               @click="
                 () => {
-                  visibleScrollableDemo = true;
+                  visibleScrollableDemo = true
                 }
               "
               >Launch demo modal</CButton
@@ -314,7 +314,7 @@
               :visible="visibleScrollableDemo"
               @close="
                 () => {
-                  visibleScrollableDemo = false;
+                  visibleScrollableDemo = false
                 }
               "
             >
@@ -322,7 +322,7 @@
                 dismiss
                 @close="
                   () => {
-                    visibleScrollableDemo = false;
+                    visibleScrollableDemo = false
                   }
                 "
               >
@@ -446,7 +446,7 @@
               color="primary"
               @click="
                 () => {
-                  visibleVerticallyCenteredDemo = true;
+                  visibleVerticallyCenteredDemo = true
                 }
               "
               >Vertically centered modal</CButton
@@ -456,7 +456,7 @@
               :visible="visibleVerticallyCenteredDemo"
               @close="
                 () => {
-                  visibleVerticallyCenteredDemo = false;
+                  visibleVerticallyCenteredDemo = false
                 }
               "
             >
@@ -464,7 +464,7 @@
                 dismiss
                 @close="
                   () => {
-                    visibleVerticallyCenteredDemo = false;
+                    visibleVerticallyCenteredDemo = false
                   }
                 "
               >
@@ -480,7 +480,7 @@
                   color="secondary"
                   @click="
                     () => {
-                      visibleVerticallyCenteredDemo = false;
+                      visibleVerticallyCenteredDemo = false
                     }
                   "
                 >
@@ -496,7 +496,7 @@
               color="primary"
               @click="
                 () => {
-                  visibleVerticallyCenteredScrollableDemo = true;
+                  visibleVerticallyCenteredScrollableDemo = true
                 }
               "
               >Vertically centered scrollable modal</CButton
@@ -507,7 +507,7 @@
               :visible="visibleVerticallyCenteredScrollableDemo"
               @close="
                 () => {
-                  visibleVerticallyCenteredScrollableDemo = false;
+                  visibleVerticallyCenteredScrollableDemo = false
                 }
               "
             >
@@ -515,7 +515,7 @@
                 dismiss
                 @close="
                   () => {
-                    visibleVerticallyCenteredScrollableDemo = false;
+                    visibleVerticallyCenteredScrollableDemo = false
                   }
                 "
               >
@@ -531,7 +531,7 @@
                   color="secondary"
                   @click="
                     () => {
-                      visibleVerticallyCenteredScrollableDemo = false;
+                      visibleVerticallyCenteredScrollableDemo = false
                     }
                   "
                 >
@@ -561,7 +561,7 @@
               color="primary"
               @click="
                 () => {
-                  tooltipsAndPopoversDemo = true;
+                  tooltipsAndPopoversDemo = true
                 }
               "
               >Launch demo modal</CButton
@@ -570,7 +570,7 @@
               :visible="tooltipsAndPopoversDemo"
               @close="
                 () => {
-                  tooltipsAndPopoversDemo = false;
+                  tooltipsAndPopoversDemo = false
                 }
               "
             >
@@ -578,7 +578,7 @@
                 dismiss
                 @close="
                   () => {
-                    tooltipsAndPopoversDemo = false;
+                    tooltipsAndPopoversDemo = false
                   }
                 "
               >
@@ -610,7 +610,7 @@
                   color="secondary"
                   @click="
                     () => {
-                      tooltipsAndPopoversDemo = false;
+                      tooltipsAndPopoversDemo = false
                     }
                   "
                 >
@@ -685,7 +685,7 @@
               color="primary"
               @click="
                 () => {
-                  xlDemo = true;
+                  xlDemo = true
                 }
               "
               >Extra large modal</CButton
@@ -694,7 +694,7 @@
               color="primary"
               @click="
                 () => {
-                  lgDemo = true;
+                  lgDemo = true
                 }
               "
               >Large modal</CButton
@@ -703,7 +703,7 @@
               color="primary"
               @click="
                 () => {
-                  smDemo = true;
+                  smDemo = true
                 }
               "
               >Small modal</CButton
@@ -713,7 +713,7 @@
               :visible="xlDemo"
               @close="
                 () => {
-                  xlDemo = false;
+                  xlDemo = false
                 }
               "
             >
@@ -721,7 +721,7 @@
                 dismiss
                 @close="
                   () => {
-                    xlDemo = false;
+                    xlDemo = false
                   }
                 "
               >
@@ -734,7 +734,7 @@
               :visible="lgDemo"
               @close="
                 () => {
-                  lgDemo = false;
+                  lgDemo = false
                 }
               "
             >
@@ -742,7 +742,7 @@
                 dismiss
                 @close="
                   () => {
-                    lgDemo = false;
+                    lgDemo = false
                   }
                 "
               >
@@ -755,7 +755,7 @@
               :visible="smDemo"
               @close="
                 () => {
-                  smDemo = false;
+                  smDemo = false
                 }
               "
             >
@@ -763,7 +763,7 @@
                 dismiss
                 @close="
                   () => {
-                    smDemo = false;
+                    smDemo = false
                   }
                 "
               >
@@ -836,7 +836,7 @@
               color="primary"
               @click="
                 () => {
-                  fullscreenDemo = true;
+                  fullscreenDemo = true
                 }
               "
               >Full screen</CButton
@@ -845,7 +845,7 @@
               color="primary"
               @click="
                 () => {
-                  fullscreenSmDemo = true;
+                  fullscreenSmDemo = true
                 }
               "
               >Full screen below sm</CButton
@@ -854,7 +854,7 @@
               color="primary"
               @click="
                 () => {
-                  fullscreenMdDemo = true;
+                  fullscreenMdDemo = true
                 }
               "
               >Full screen below md</CButton
@@ -863,7 +863,7 @@
               color="primary"
               @click="
                 () => {
-                  fullscreenLgDemo = true;
+                  fullscreenLgDemo = true
                 }
               "
               >Full screen below lg</CButton
@@ -872,7 +872,7 @@
               color="primary"
               @click="
                 () => {
-                  fullscreenXlDemo = true;
+                  fullscreenXlDemo = true
                 }
               "
               >Full screen below xl</CButton
@@ -881,7 +881,7 @@
               color="primary"
               @click="
                 () => {
-                  fullscreenXxlDemo = true;
+                  fullscreenXxlDemo = true
                 }
               "
               >Full screen below xxl</CButton
@@ -891,7 +891,7 @@
               :visible="fullscreenDemo"
               @close="
                 () => {
-                  fullscreenDemo = false;
+                  fullscreenDemo = false
                 }
               "
             >
@@ -899,7 +899,7 @@
                 dismiss
                 @close="
                   () => {
-                    xlDemo = false;
+                    xlDemo = false
                   }
                 "
               >
@@ -912,7 +912,7 @@
               :visible="fullscreenSmDemo"
               @close="
                 () => {
-                  fullscreenSmDemo = false;
+                  fullscreenSmDemo = false
                 }
               "
             >
@@ -920,7 +920,7 @@
                 dismiss
                 @close="
                   () => {
-                    fullscreenSmDemo = false;
+                    fullscreenSmDemo = false
                   }
                 "
               >
@@ -933,7 +933,7 @@
               :visible="fullscreenMdDemo"
               @close="
                 () => {
-                  fullscreenMdDemo = false;
+                  fullscreenMdDemo = false
                 }
               "
             >
@@ -941,7 +941,7 @@
                 dismiss
                 @close="
                   () => {
-                    fullscreenMdDemo = false;
+                    fullscreenMdDemo = false
                   }
                 "
               >
@@ -954,7 +954,7 @@
               :visible="fullscreenLgDemo"
               @close="
                 () => {
-                  fullscreenLgDemo = false;
+                  fullscreenLgDemo = false
                 }
               "
             >
@@ -962,7 +962,7 @@
                 dismiss
                 @close="
                   () => {
-                    fullscreenLgDemo = false;
+                    fullscreenLgDemo = false
                   }
                 "
               >
@@ -975,7 +975,7 @@
               :visible="fullscreenXlDemo"
               @close="
                 () => {
-                  fullscreenXlDemo = false;
+                  fullscreenXlDemo = false
                 }
               "
             >
@@ -983,7 +983,7 @@
                 dismiss
                 @close="
                   () => {
-                    fullscreenXlDemo = false;
+                    fullscreenXlDemo = false
                   }
                 "
               >
@@ -996,7 +996,7 @@
               :visible="fullscreenXxlDemo"
               @close="
                 () => {
-                  fullscreenXxlDemo = false;
+                  fullscreenXxlDemo = false
                 }
               "
             >
@@ -1004,7 +1004,7 @@
                 dismiss
                 @close="
                   () => {
-                    fullscreenXxlDemo = false;
+                    fullscreenXxlDemo = false
                   }
                 "
               >
@@ -1020,25 +1020,25 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref } from 'vue'
 export default {
-  name: "Modals",
+  name: 'Modals',
   setup() {
-    const visibleLiveDemo = ref(false);
-    const visibleStaticBackdropDemo = ref(false);
-    const visibleScrollingLongContentDemo = ref(false);
-    const visibleScrollableDemo = ref(false);
-    const visibleVerticallyCenteredDemo = ref(false);
-    const visibleVerticallyCenteredScrollableDemo = ref(false);
-    const xlDemo = ref(false);
-    const lgDemo = ref(false);
-    const smDemo = ref(false);
-    const fullscreenDemo = ref(false);
-    const fullscreenSmDemo = ref(false);
-    const fullscreenMdDemo = ref(false);
-    const fullscreenLgDemo = ref(false);
-    const fullscreenXlDemo = ref(false);
-    const fullscreenXxlDemo = ref(false);
+    const visibleLiveDemo = ref(false)
+    const visibleStaticBackdropDemo = ref(false)
+    const visibleScrollingLongContentDemo = ref(false)
+    const visibleScrollableDemo = ref(false)
+    const visibleVerticallyCenteredDemo = ref(false)
+    const visibleVerticallyCenteredScrollableDemo = ref(false)
+    const xlDemo = ref(false)
+    const lgDemo = ref(false)
+    const smDemo = ref(false)
+    const fullscreenDemo = ref(false)
+    const fullscreenSmDemo = ref(false)
+    const fullscreenMdDemo = ref(false)
+    const fullscreenLgDemo = ref(false)
+    const fullscreenXlDemo = ref(false)
+    const fullscreenXxlDemo = ref(false)
 
     return {
       visibleLiveDemo,
@@ -1056,7 +1056,7 @@ export default {
       fullscreenLgDemo,
       fullscreenXlDemo,
       fullscreenXxlDemo,
-    };
+    }
   },
-};
+}
 </script>

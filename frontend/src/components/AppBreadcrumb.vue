@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
-import router from "@/router";
+import { onMounted, ref } from 'vue'
+import router from '@/router'
 
 export default {
-  name: "AppBreadcrumb",
+  name: 'AppBreadcrumb',
   setup() {
-    const breadcrumbs = ref();
+    const breadcrumbs = ref()
 
     const getBreadcrumbs = () => {
       return router.currentRoute.value.matched.map((route) => {
@@ -26,21 +26,21 @@ export default {
           active: route.path === router.currentRoute.value.fullPath,
           name: route.name,
           path: `${router.options.history.base}${route.path}`,
-        };
-      });
-    };
+        }
+      })
+    }
 
     router.afterEach(() => {
-      breadcrumbs.value = getBreadcrumbs();
-    });
+      breadcrumbs.value = getBreadcrumbs()
+    })
 
     onMounted(() => {
-      breadcrumbs.value = getBreadcrumbs();
-    });
+      breadcrumbs.value = getBreadcrumbs()
+    })
 
     return {
       breadcrumbs,
-    };
+    }
   },
-};
+}
 </script>

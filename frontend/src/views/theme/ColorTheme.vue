@@ -10,12 +10,12 @@
 
 <script>
 export default {
-  name: "ColorTheme",
+  name: 'ColorTheme',
   props: {
     color: {
       type: String,
       default: undefined,
     },
   },
-};
+}
 </script>

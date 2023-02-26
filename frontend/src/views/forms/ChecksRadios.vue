@@ -399,6 +399,6 @@
 
 <script>
 export default {
-  name: "ChecksRadios",
-};
+  name: 'ChecksRadios',
+}
 </script>

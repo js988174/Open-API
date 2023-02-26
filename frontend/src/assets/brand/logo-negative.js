@@ -1,5 +1,5 @@
 export const logoNegative = [
-  "556 134",
+  '556 134',
   `
   <title>coreui vue logo</title>
   <g>
@@ -28,4 +28,4 @@ export const logoNegative = [
   </g>
 </g>
 `,
-];
+]

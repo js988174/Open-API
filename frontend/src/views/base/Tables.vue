@@ -988,6 +988,6 @@
 
 <script>
 export default {
-  name: "Tables",
-};
+  name: 'Tables',
+}
 </script>

@@ -245,6 +245,6 @@
 
 <script>
 export default {
-  name: "FormControl",
-};
+  name: 'FormControl',
+}
 </script>
