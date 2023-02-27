@@ -63,8 +63,24 @@ export default {
         labels: ['부산', '대구', '강원', '경기', '인천', '서울', '울산'],
         datasets: [
           {
-            backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-            data: [40, 20, 80, 10],
+            backgroundColor: [
+              '#41B883',
+              '#E46651',
+              '#00D8FF',
+              '#DD1B16',
+              '#0076A3',
+              '#FFA500',
+              '#8B00FF',
+            ],
+            data: [
+              this.busan,
+              this.daegu,
+              this.gangwon,
+              this.gyeonggi,
+              this.incheon,
+              this.seoul,
+              this.ulsan,
+            ],
           },
         ],
       }
@@ -78,6 +94,13 @@ export default {
       covidDataList: [],
       covidKorea: [],
       covidUpdateTime: String,
+      busan: '',
+      daegu: '',
+      gangwon: '',
+      gyeonggi: '',
+      incheon: '',
+      seoul: '',
+      ulsan: '',
     }
   },
   methods: {
@@ -86,6 +109,16 @@ export default {
         this.covidDataList = response.data
         this.covidUpdateTime = response.data.API.updateTime
         this.covidKorea = response.data.korea
+
+        // 지역별 확진자 수
+        this.busan = response.data.busan.incDec
+        this.daegu = response.data.daegu.incDec
+        this.gangwon = response.data.gangwon.incDec
+        this.gyeonggi = response.data.gyeonggi.incDec
+        this.incheon = response.data.incheon.incDec
+        this.seoul = response.data.seoul.incDec
+        this.ulsan = response.data.ulsan.incDec
+
         console.log('updateTIme', this.covidKorea)
         console.log('covid19', this.covidDataList)
       })
