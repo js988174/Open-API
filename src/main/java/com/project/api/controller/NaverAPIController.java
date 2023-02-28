@@ -12,7 +12,7 @@ public class NaverAPIController {
     private final NaverOpenAPI naverOpenAPI;
 
     @GetMapping("/test")
-    public Object test() throws Exception {
-        return naverOpenAPI.createSearch();
+    public Object test(String keyword) throws Exception {
+        return naverOpenAPI.createSearch(keyword);
     }
 }

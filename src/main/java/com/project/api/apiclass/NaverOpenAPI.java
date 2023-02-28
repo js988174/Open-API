@@ -22,12 +22,12 @@ public class NaverOpenAPI {
     private static final String ClientKey = "XfVQ7gFjas";
 
 
-    public Object createSearch() throws Exception{
+    public Object createSearch(String keyword) throws Exception{
 
 
         String text = null;
         try {
-            text = URLEncoder.encode("케로로", "UTF-8");
+            text = URLEncoder.encode(keyword, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException("검색어 인코딩 실패",e);
         }
