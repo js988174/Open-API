@@ -18,7 +18,7 @@ public class WeatherAPI {
 
     public Object test() throws Exception{
         String enc = "UTF-8";
-        StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1360000/WthrChartInfoService/getSurfaceChart"); /*URL*/
+        StringBuilder urlBuilder = new StringBuilder("https://openapi.naver.com/v1/search/movie.json"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=" +
                 "aXRvEuydsB3VHnBbhOSxVlV082l%2BZFFBg1x5mnyiIYNJAPMAga3eT8Ij74RZxl%2F7s0VLFZgna67sdG5c7FMytA%3D%3D"); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/

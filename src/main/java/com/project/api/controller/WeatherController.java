@@ -22,11 +22,6 @@ import java.net.URLEncoder;
 @RequiredArgsConstructor
 public class WeatherController {
 
-    private final WeatherAPI weatherAPI;
 
-    @GetMapping("/test")
-    public Object test() throws Exception {
-        return weatherAPI.test();
-    }
 
 }
