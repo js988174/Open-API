@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
-    @GetMapping("")
-    public String index(){
-        System.out.println("인덱스 들어옴");
-        return "/index";
+    @GetMapping("/swagger-ui")
+    public String homeRedirect() {
+        System.out.println("스웨거 진입");
+        return "redirect:/swagger-ui/index.html";
     }
 }
