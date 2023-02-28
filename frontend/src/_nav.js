@@ -39,6 +39,11 @@ export default [
         name: 'Weather',
         to: '/pages/weather',
       },
+      {
+        component: 'CNavItem',
+        name: 'Movie',
+        to: '/pages/movie',
+      },
     ],
   },
   {

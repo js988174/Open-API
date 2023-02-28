@@ -292,6 +292,11 @@ const routes = [
             component: () => import('@/views/pages/Weather'),
           },
           {
+            path: 'movie',
+            name: 'Movie',
+            component: () => import('@/views/pages/Movie'),
+          },
+          {
             path: 'covid',
             name: 'Covid',
             component: () => import('@/views/pages/Covid'),
