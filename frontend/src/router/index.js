@@ -294,6 +294,7 @@ const routes = [
           {
             path: 'movie',
             name: 'Movie',
+            props: true,
             component: () => import('@/views/pages/Movie'),
           },
           {
