@@ -7,7 +7,7 @@
       aria-label="default input example"
     />
     <br />
-    <CButton @click="clickSearch(keyword)" color="success">검색</CButton>
+    <CButton @click="clickSearch()" color="success">검색</CButton>
   </div>
 </template>
 
@@ -21,17 +21,19 @@ export default {
     }
   },
   mounted() {
-    this.movieList
+    this.movieList()
   },
   methods: {
     movieList(query) {
-      this.$axios.get('/api/movie' + query).then((response) => {
+      this.$axios.get('/api/movie?keyword=' + query).then((response) => {
         this.movieDataList = response.data
+
+        console.log(response.data)
       })
     },
     clickSearch() {
-      let query = {}
-      query = this.$route.query.keyword
+      let query = ''
+      query = this.keyword
       console.log('query', query)
       this.movieList(query)
     },
