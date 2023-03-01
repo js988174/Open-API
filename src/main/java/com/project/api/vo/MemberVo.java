@@ -17,7 +17,7 @@ import javax.validation.constraints.NotBlank;
 public class MemberVo {
 
 
-    private Integer memberNo;
+    private Long memberNo;
     @NotBlank(message = "id를 입력해주세요.")
     private String id;
     @NotBlank(message = "pw를 입력해주세요.")

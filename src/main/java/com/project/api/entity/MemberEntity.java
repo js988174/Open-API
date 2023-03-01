@@ -18,7 +18,7 @@ public class MemberEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer memberNo;
+    private Long memberNo;
 
     private String id;
     private String password;
