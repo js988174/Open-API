@@ -26,7 +26,6 @@ public class MemberEntity {
 
     @Builder
     public MemberEntity(MemberVo memberVo) {
-
         this.id = memberVo.getId();
         this.password = memberVo.getPassword();
         this.name = memberVo.getName();
