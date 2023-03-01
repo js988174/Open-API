@@ -1,18 +1,15 @@
-package com.project.api.apiclass.navere;
+package com.project.api.apiclass.naver;
 
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.*;
 import java.net.*;
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 @RequiredArgsConstructor
 @Component
