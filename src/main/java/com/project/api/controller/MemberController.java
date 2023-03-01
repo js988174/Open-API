@@ -5,6 +5,7 @@ import com.project.api.repository.MemberRepository;
 import com.project.api.vo.MemberVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,10 +16,10 @@ public class MemberController {
 
     private final MemberRepository memberRepository;
     @PostMapping("/join")
-    public MemberEntity join(MemberVo memberVo){
+    public MemberEntity join(@RequestBody MemberVo memberVo){
 
         MemberEntity member = MemberEntity.builder().memberVo(memberVo).build();
-        memberRepository.save(member); 
+        memberRepository.save(member);
         return member;
     }
 
