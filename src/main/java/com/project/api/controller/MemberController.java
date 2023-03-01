@@ -18,7 +18,7 @@ public class MemberController {
     public MemberEntity join(MemberVo memberVo){
 
         MemberEntity member = MemberEntity.builder().memberVo(memberVo).build();
-        memberRepository.save(member);
+        memberRepository.save(member); 
         return member;
     }
 
