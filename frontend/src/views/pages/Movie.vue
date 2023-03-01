@@ -8,6 +8,15 @@
     />
     <br />
     <CButton @click="clickSearch()" color="success">검색</CButton>
+    <CRow>
+      <CCard style="width: 18rem" v-for="item in movieDataList" :key="item">
+        <CCardImage orientation="top" :src="item.image" />
+        <CCardBody>
+          <CCardTitle>{{ item.title }}</CCardTitle>
+          <CCardText> {{ item.pubDate }} </CCardText>
+        </CCardBody>
+      </CCard>
+    </CRow>
   </div>
 </template>
 
@@ -26,7 +35,7 @@ export default {
   methods: {
     movieList(query) {
       this.$axios.get('/api/movie?keyword=' + query).then((response) => {
-        this.movieDataList = response.data
+        this.movieDataList = response.data.items
 
         console.log(response.data)
       })
