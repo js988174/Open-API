@@ -4,13 +4,10 @@ import com.project.api.entity.MemberEntity;
 import com.project.api.repository.MemberRepository;
 import com.project.api.vo.MemberVo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/member")
 @RequiredArgsConstructor
 public class MemberController {
 
@@ -22,5 +19,10 @@ public class MemberController {
         memberRepository.save(member);
         return member;
     }
+    @GetMapping("/find")
+    public Object find(Long no){
 
+
+        return memberRepository.findById(no);
+    }
 }
