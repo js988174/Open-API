@@ -6,6 +6,8 @@ import com.project.api.vo.MemberVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/member")
 @RequiredArgsConstructor
@@ -21,8 +23,16 @@ public class MemberController {
     }
     @GetMapping("/find")
     public Object find(Long no){
+        Optional<MemberEntity> member = memberRepository.findById(no);
 
+        System.out.println(member.get().toString());;
+        return member.get();
+    }
 
-        return memberRepository.findById(no);
+    @GetMapping("/findString")
+    public Object findString(String name){
+        MemberEntity member = memberRepository.findByName(name);
+
+        return member;
     }
 }
