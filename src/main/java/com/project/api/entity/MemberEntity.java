@@ -1,6 +1,8 @@
 package com.project.api.entity;
 
+import com.project.api.vo.MemberVo;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,8 +21,16 @@ public class MemberEntity {
     private Integer memberNo;
 
     private String id;
-
     private String password;
-
     private String name;
+
+    @Builder
+    public MemberEntity(MemberVo memberVo) {
+
+        this.id = memberVo.getId();
+        this.password = memberVo.getPassword();
+        this.name = memberVo.getName();
+    }
+
+
 }
