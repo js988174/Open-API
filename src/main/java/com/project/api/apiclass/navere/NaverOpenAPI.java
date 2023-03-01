@@ -1,4 +1,4 @@
-package com.project.api.apiclass;
+package com.project.api.apiclass.navere;
 
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;

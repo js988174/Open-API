@@ -1,7 +1,6 @@
 package com.project.api.controller;
 
-import com.project.api.apiclass.NaverOpenAPI;
-import com.project.api.apiclass.WeatherAPI;
+import com.project.api.apiclass.navere.NaverOpenAPI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
