@@ -16,7 +16,6 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class MemberVo {
 
-
     private Long memberNo;
     @NotBlank(message = "id를 입력해주세요.")
     private String id;
