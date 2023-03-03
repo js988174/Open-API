@@ -23,18 +23,18 @@ public class MemberService {
             throw new InvalidRequest("id", "이미 가입된 ID입니다.");
         }
 
-//        SCryptPasswordEncoder encoder = new SCryptPasswordEncoder(
-//                16,
-//                8,
-//                1,
-//                32,
-//                64);
-//
-//        String encryptedPassword = encoder.encode(memberVo.getPassword());
+        SCryptPasswordEncoder encoder = new SCryptPasswordEncoder(
+                16,
+                8,
+                1,
+                32,
+                64);
+
+        String encryptedPassword = encoder.encode(memberVo.getPassword());
 
         MemberEntity member = MemberEntity.builder()
                 .id(memberVo.getId())
-                .password(memberVo.getPassword())
+                .password(encryptedPassword)
                 .name(memberVo.getPassword())
                 .build();
 
