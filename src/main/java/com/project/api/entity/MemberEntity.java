@@ -30,6 +30,4 @@ public class MemberEntity {
         this.password = password;
         this.name = name;
     }
-
-
 }
