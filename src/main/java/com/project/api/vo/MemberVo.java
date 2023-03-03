@@ -1,6 +1,7 @@
 package com.project.api.vo;
 
 
+import com.project.api.entity.MemberEntity;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -31,5 +32,12 @@ public class MemberVo {
         this.password = password;
         this.name = name;
     }
-
+    public MemberEntity getMemberEntity(){
+        MemberEntity member = MemberEntity.builder()
+                .id(getId())
+                .password(getPassword())
+                .name(getName())
+                .build();
+        return member;
+    }
 }
