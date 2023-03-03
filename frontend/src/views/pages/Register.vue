@@ -71,6 +71,7 @@ export default {
             alert(response.data.errorMessage)
           } else {
             alert('회원가입이 완료되었습니다. 로그인 화면으로 돌아갑니다')
+            this.$router.push('./login')
           }
         })
     },
