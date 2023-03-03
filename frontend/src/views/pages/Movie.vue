@@ -9,15 +9,20 @@
     <br />
     <CButton @click="clickSearch()" color="success">검색</CButton>
     <CRow>
-      <CCard style="width: 18rem" v-for="item in movieDataList" :key="item">
+      <CCard
+        style="width: 18rem"
+        :style="{ margin: 15 + 'px' }"
+        v-for="item in movieDataList"
+        :key="item"
+      >
         <CCardImage
           orientation="top"
           :src="item.image"
-          width="200"
-          height="200"
+          width="180"
+          height="180"
         />
         <CCardBody>
-          <CCardTitle>{{ item.title }}</CCardTitle>
+          <CCardTitle v-html="item.title"></CCardTitle>
           <CCardText> {{ item.pubDate }} </CCardText>
         </CCardBody>
       </CCard>
