@@ -39,9 +39,7 @@ export default {
       keyword: '',
     }
   },
-  mounted() {
-    this.movieList()
-  },
+  mounted() {},
   methods: {
     movieList(query) {
       this.$axios.get('/api/movie?keyword=' + query).then((response) => {

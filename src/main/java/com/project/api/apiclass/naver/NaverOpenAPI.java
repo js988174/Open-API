@@ -18,7 +18,6 @@ public class NaverOpenAPI {
     private static final String ClientID = "d8F7qH1zqcNCUpNkB1JQ" ;
     private static final String ClientKey = "XfVQ7gFjas";
 
-
     public Object createSearch(String keyword) throws Exception{
 
 
