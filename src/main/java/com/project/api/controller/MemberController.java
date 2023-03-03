@@ -18,7 +18,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping("/member/join")
+    @PostMapping("/member/create")
     public MemberVo join(@RequestBody MemberVo memberVo){
         memberService.createMember(memberVo);
         return memberVo;
