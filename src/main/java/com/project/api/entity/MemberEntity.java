@@ -25,10 +25,10 @@ public class MemberEntity {
     private String name;
 
     @Builder
-    public MemberEntity(MemberVo memberVo) {
-        this.id = memberVo.getId();
-        this.password = memberVo.getPassword();
-        this.name = memberVo.getName();
+    public MemberEntity(String id, String password, String name) {
+        this.id = id;
+        this.password = password;
+        this.name = name;
     }
 
 
