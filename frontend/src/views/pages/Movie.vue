@@ -9,7 +9,12 @@
     <br />
     <CButton @click="clickSearch()" color="success">검색</CButton>
     <CRow>
-      <CCard style="width: 18rem" v-for="item in movieDataList" :key="item">
+      <CCard
+        style="width: 18rem"
+        v-for="item in movieDataList"
+        :key="item"
+        margin="3px"
+      >
         <CCardImage
           orientation="top"
           :src="item.image"

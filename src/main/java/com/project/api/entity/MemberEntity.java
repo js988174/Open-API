@@ -30,6 +30,4 @@ public class MemberEntity {
         this.password = memberVo.getPassword();
         this.name = memberVo.getName();
     }
-
-
 }
