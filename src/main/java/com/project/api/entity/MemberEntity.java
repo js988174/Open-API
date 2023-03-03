@@ -23,7 +23,7 @@ public class MemberEntity {
     private String password;
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "member")
     public List<BoardEntity> boardList;
 
 
