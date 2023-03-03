@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface BoardRepository  extends JpaRepository<BoardEntity, Long> {
+    List<BoardEntity> findByMember(MemberEntity member);
 
-    List<BoardEntity> findByMemberNo(Long no);
 
 }

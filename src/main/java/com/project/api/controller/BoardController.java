@@ -23,7 +23,7 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public List<BoardVo> write(){
+    public List<BoardVo> boardList(){
         return boardService.boardList();
     }
 }
