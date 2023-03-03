@@ -44,6 +44,11 @@ export default [
         name: 'Movie',
         to: '/pages/movie',
       },
+      {
+        component: 'CNavItem',
+        name: 'Board',
+        to: '/pages/board',
+      },
     ],
   },
   // {

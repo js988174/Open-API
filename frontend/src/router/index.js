@@ -77,6 +77,11 @@ const routes = [
             name: 'Covid',
             component: () => import('@/views/pages/Covid'),
           },
+          {
+            path: 'board',
+            name: 'Board',
+            component: () => import('@/views/pages/Board'),
+          },
         ],
       },
     ],

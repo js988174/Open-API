@@ -34,7 +34,7 @@
                     </CCol>
                     <CCol :xs="6" class="text-right">
                       <CButton color="link" class="px-0">
-                        Forgot password?
+                        비밀번호 찾기
                       </CButton>
                     </CCol>
                   </CRow>
@@ -44,14 +44,10 @@
             <CCard class="text-white bg-primary py-5" style="width: 44%">
               <CCardBody class="text-center">
                 <div>
-                  <h2>Sign up</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
-                  </p>
+                  <h2>회원 가입</h2>
+                  <p>다양한 API 테스트</p>
                   <CButton color="light" variant="outline" class="mt-3">
-                    Register Now!
+                    회원가입 하로 가기
                   </CButton>
                 </div>
               </CCardBody>
