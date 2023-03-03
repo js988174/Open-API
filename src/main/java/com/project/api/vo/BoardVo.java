@@ -20,9 +20,13 @@ public class BoardVo {
     private String content;
 
 
-    public BoardEntity getBoardEntity(MemberEntity member){
-        return BoardEntity.builder().member(member).title(getTitle()).
-                content(getContent()).regDay(LocalDate.now()).build();
+    public BoardEntity getBoardEntity(MemberEntity member) {
+        return BoardEntity.builder()
+                .member(member)
+                .title(getTitle())
+                .content(getContent())
+                .regDay(LocalDate.now())
+                .build();
     }
 
     public BoardVo(BoardEntity boardEntity){

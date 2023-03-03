@@ -15,11 +15,12 @@ import java.util.stream.Collectors;
 public class BoardService {
     private final BoardRepository boardRepository;
 
-    public void saveBoard(BoardVo boardVo , MemberEntity member){
+    public BoardVo saveBoard(BoardVo boardVo , MemberEntity member){
 
         BoardEntity boardEntity = boardVo.getBoardEntity(member);
 
         boardRepository.save(boardEntity);
+        return boardVo;
     }
 
     public List<BoardVo> boardList(){

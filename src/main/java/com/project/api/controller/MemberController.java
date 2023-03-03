@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/member")
 @RequiredArgsConstructor
 public class MemberController {
 
@@ -18,21 +18,27 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping("/member/create")
+    @PostMapping("/create")
     public MemberVo join(@RequestBody MemberVo memberVo){
         memberService.createMember(memberVo);
         return memberVo;
     }
-    @GetMapping("/member/find")
+    @GetMapping("/find")
     public Object find(Long id){
         Optional<MemberEntity> memberId = memberRepository.findById(id);
         return memberId;
     }
 
-    @GetMapping("/member/findString")
+    @GetMapping("/findString")
     public Object findString(String name){
         MemberEntity member = memberRepository.findByName(name);
 
         return member;
+    }
+
+    @PostMapping("/login")
+    public MemberVo login(@RequestBody MemberVo memberVo) {
+        memberService.signin(memberVo);
+        return memberVo;
     }
 }

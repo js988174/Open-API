@@ -14,12 +14,9 @@ import java.util.List;
 public class BoardController {
     private final BoardService boardService;
 
-
     @PostMapping("/write")
-    public void write(@RequestBody BoardVo boardVo){
-
-//        MemberEntity member = new MemberEntity();
-//        boardService.saveBoard(boardVo);
+    public BoardVo write(@RequestBody BoardVo boardVo){
+        return boardService.saveBoard(boardVo, new MemberEntity("id","pw","김"));
     }
 
     @GetMapping("/list")

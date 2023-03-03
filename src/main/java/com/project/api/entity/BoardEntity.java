@@ -26,7 +26,7 @@ public class BoardEntity {
     private MemberEntity member;
 
     @Builder
-    public BoardEntity(String title, String content, LocalDate regDay,MemberEntity member) {
+    public BoardEntity(String title, String content, LocalDate regDay, MemberEntity member) {
         this.title = title;
         this.content = content;
         this.regDay = regDay;
