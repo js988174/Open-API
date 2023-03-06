@@ -1,10 +1,12 @@
 package com.project.api.crypto;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
 
-
-public class PasswordEncoderCustom {
+@Component
+public class PasswordEncoderCustom implements PasswordEncoder {
 
     private static final SCryptPasswordEncoder encoder = new SCryptPasswordEncoder(
             16,
@@ -14,13 +16,18 @@ public class PasswordEncoderCustom {
             64);
 
 
-    public String encrpyt(String rawPassword) {
+    @Override
+    public String encode(CharSequence rawPassword) {
         return encoder.encode(rawPassword);
     }
 
-    public boolean matches(String rawPassword, String encrpytedPassword) {
-        return encoder.matches(rawPassword, encrpytedPassword);
+    @Override
+    public boolean matches(CharSequence rawPassword, String encodedPassword) {
+        return encoder.matches(rawPassword, encodedPassword);
     }
 
-
+    @Override
+    public boolean upgradeEncoding(String encodedPassword) {
+        return PasswordEncoder.super.upgradeEncoding(encodedPassword);
+    }
 }
