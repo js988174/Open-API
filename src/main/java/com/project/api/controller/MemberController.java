@@ -3,6 +3,7 @@ package com.project.api.controller;
 import com.project.api.entity.MemberEntity;
 import com.project.api.repository.MemberRepository;
 import com.project.api.service.MemberService;
+import com.project.api.service.SignService;
 import com.project.api.vo.MemberVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ public class MemberController {
     private final MemberRepository memberRepository;
 
     private final MemberService memberService;
+    private final SignService signService;
 
     @PostMapping("/create")
     public MemberVo join(@RequestBody MemberVo memberVo){
@@ -38,7 +40,7 @@ public class MemberController {
 
     @PostMapping("/login")
     public MemberVo login(@RequestBody MemberVo memberVo) {
-        memberService.signin(memberVo);
+        signService.signin(memberVo);
         return memberVo;
     }
 }

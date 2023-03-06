@@ -39,24 +39,7 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
-    @Transactional
-    public String signin(MemberVo memberVo) {
-        MemberEntity memberEntity = memberRepository.findById(memberVo.getId());
 
-        var matches  = passwordEncoder.matches(memberVo.getPassword(), memberEntity.getPassword());
 
-        if (!matches) {
-            throw new InvalidRequest("login Fail", "로그인 실패");
-        }
-
-        return memberEntity.getId();
-    }
-
-    public MemberEntity findById(MemberVo memberVo) {
-        return memberRepository.findById(memberVo.getId());
-    }
-    public MemberEntity findByName(String name) {
-        return memberRepository.findByName(name);
-    }
 
 }

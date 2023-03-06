@@ -2,6 +2,7 @@ package com.project.api.config.jwt;
 
 import com.project.api.service.MemberService;
 
+import com.project.api.service.SignService;
 import com.project.api.vo.UserDetailDTO;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ import java.util.List;
 public class JwtTokenProvider {
     private final String secretKey = "DSCache";
     private final long tokenValidTime = 30 * 60 * 10000;
-    private final MemberService memberService;
+    private final SignService signService;
 
     public String createToken(String userId, List<String> roles) {
         Claims claims = Jwts.claims().setSubject(userId); // JWT payload 에 저장되는 정보단위
@@ -36,7 +37,7 @@ public class JwtTokenProvider {
     }
     // JWT 토큰에서 인증 정보 조회
     public Authentication getAuthentication(String token) {
-        UserDetailDTO userDetails = new UserDetailDTO(memberService.findByName(this.getUserPk(token)));
+        UserDetailDTO userDetails = new UserDetailDTO(signService.findByName(this.getUserPk(token)));
         System.out.println("토큰 인증 조회 =================");
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
