@@ -14,6 +14,7 @@
                       <CIcon icon="cil-user" />
                     </CInputGroupText>
                     <CFormInput
+                      v-model="id"
                       placeholder="Username"
                       autocomplete="username"
                     />
@@ -23,6 +24,7 @@
                       <CIcon icon="cil-lock-locked" />
                     </CInputGroupText>
                     <CFormInput
+                      v-model="password"
                       type="password"
                       placeholder="Password"
                       autocomplete="current-password"
@@ -30,7 +32,9 @@
                   </CInputGroup>
                   <CRow>
                     <CCol :xs="6">
-                      <CButton color="primary" class="px-4"> Login </CButton>
+                      <CButton color="primary" class="px-4" @click="login">
+                        Login
+                      </CButton>
                     </CCol>
                     <CCol :xs="6" class="text-right">
                       <CButton color="link" class="px-0">
@@ -62,5 +66,29 @@
 <script>
 export default {
   name: 'Login',
+  data() {
+    return {
+      id: '',
+      password: '',
+    }
+  },
+  mounted() {},
+  methods: {
+    login() {
+      this.$axios
+        .post('/api/member/login', {
+          id: this.id,
+          password: this.password,
+        })
+        .then((response) => {
+          if (response.data.errorCode === 400) {
+            alert(response.data.errorMessage)
+          } else {
+            alert('로그인이 완료되었습니다. 메인 화면으로 돌아갑니다')
+            this.$router.push('./')
+          }
+        })
+    },
+  },
 }
 </script>

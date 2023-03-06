@@ -21,7 +21,7 @@ public class MemberService {
     public MemberEntity createMember(MemberVo memberVo) {
         MemberEntity memberEntity = memberRepository.findById(memberVo.getId());
 
-        if (memberEntity == null) {
+        if (memberEntity != null) {
             throw new InvalidRequest("id", "이미 가입된 ID입니다.");
         }
 
@@ -38,21 +38,20 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
-//    @Transactional
-//    public String signin(MemberVo memberVo) {
-//        MemberEntity memberEntity = memberRepository.findById(memberVo.getId())
-//                .orElseThrow(InvalidRequest::new);
-//
-//        PasswordEncoder encoder = new PasswordEncoder();
-//
-//        var matches  = encoder.matches(memberVo.getPassword(), memberEntity.getPassword());
-//
-//        if (!matches) {
-//            throw new InvalidRequest("login Fail", "로그인 실패");
-//        }
-//
-//        return memberEntity.getId();
-//    }
+    @Transactional
+    public String signin(MemberVo memberVo) {
+        MemberEntity memberEntity = memberRepository.findById(memberVo.getId());
+
+        PasswordEncoder encoder = new PasswordEncoder();
+
+        var matches  = encoder.matches(memberVo.getPassword(), memberEntity.getPassword());
+
+        if (!matches) {
+            throw new InvalidRequest("login Fail", "로그인 실패");
+        }
+
+        return memberEntity.getId();
+    }
 
     public MemberEntity findById(MemberVo memberVo) {
         return memberRepository.findById(memberVo.getId());
