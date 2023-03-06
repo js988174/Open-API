@@ -26,13 +26,13 @@ public class MemberService {
             throw new InvalidRequest("id", "이미 가입된 ID입니다.");
         }
 
-        PasswordEncoderCustom encoder = new PasswordEncoderCustom();
-
-        String encryptedPassword = encoder.encrpyt(memberVo.getPassword());
-
+//        PasswordEncoderCustom encoder = new PasswordEncoderCustom();
+//
+//        String encryptedPassword = encoder.encrpyt(memberVo.getPassword());
+        String encPass = passwordEncoder.encode(memberVo.getPassword());
         MemberEntity member = MemberEntity.builder()
                 .id(memberVo.getId())
-                .password(encryptedPassword)
+                .password(encPass)
                 .name(memberVo.getName())
                 .build();
 
