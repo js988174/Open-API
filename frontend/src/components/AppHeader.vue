@@ -14,17 +14,8 @@
         <CNavItem>
           <CNavLink href="#">Users</CNavLink>
         </CNavItem>
-        <CNavItem>
-          <CNavLink href="#">Settings</CNavLink>
-        </CNavItem>
       </CHeaderNav>
-      <CHeaderNav>
-        <CNavItem>
-          <CNavLink href="#">
-            <CIcon class="mx-2" icon="cil-list" size="lg" />
-          </CNavLink>
-        </CNavItem>
-      </CHeaderNav>
+      <CHeaderNav> </CHeaderNav>
     </CContainer>
     <CHeaderDivider />
     <CContainer fluid>
