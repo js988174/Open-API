@@ -1,8 +1,8 @@
 package com.project.api.config.jwt;
 
 import com.project.api.service.MemberService;
-import dtalk.dto.user.UserDetailDTO;
-import dtalk.service.UserService;
+
+import com.project.api.vo.UserDetailDTO;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -36,7 +36,7 @@ public class JwtTokenProvider {
     }
     // JWT 토큰에서 인증 정보 조회
     public Authentication getAuthentication(String token) {
-        UserDetailDTO userDetails = new UserDetailDTO(userService.findByUserId(this.getUserPk(token)));
+        UserDetailDTO userDetails = new UserDetailDTO(memberService.findByName(this.getUserPk(token)));
         System.out.println("토큰 인증 조회 =================");
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }

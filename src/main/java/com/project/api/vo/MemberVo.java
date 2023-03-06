@@ -32,6 +32,9 @@ public class MemberVo {
         this.password = password;
         this.name = name;
     }
+
+
+
     public MemberEntity getMemberEntity(){
         MemberEntity member = MemberEntity.builder()
                 .id(getId())

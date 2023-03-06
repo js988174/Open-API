@@ -2,8 +2,8 @@ package com.project.api.config.jwt;
 
 import com.project.api.repository.MemberRepository;
 import com.project.api.vo.MemberVo;
-import dtalk.dto.user.UserDetailDTO;
-import dtalk.repository.UserRepository;
+import com.project.api.vo.UserDetailDTO;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,7 +21,7 @@ public class CustomUserDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("loadUserByUsername");
-        return new MemberVo(memberRepository.findById(username));
+        return new UserDetailDTO(memberRepository.findById(username));
     }
 
 
