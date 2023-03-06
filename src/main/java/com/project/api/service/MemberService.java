@@ -43,8 +43,6 @@ public class MemberService {
     public String signin(MemberVo memberVo) {
         MemberEntity memberEntity = memberRepository.findById(memberVo.getId());
 
-        PasswordEncoderCustom encoder = new PasswordEncoderCustom();
-
         var matches  = passwordEncoder.matches(memberVo.getPassword(), memberEntity.getPassword());
 
         if (!matches) {

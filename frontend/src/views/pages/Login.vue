@@ -85,7 +85,7 @@ export default {
             alert(response.data.errorMessage)
           } else {
             alert('로그인이 완료되었습니다. 메인 화면으로 돌아갑니다')
-            this.$router.push('./')
+            this.$router.push('/dashboard')
           }
         })
     },
