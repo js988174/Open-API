@@ -17,7 +17,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    //private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     public MemberEntity createMember(MemberVo memberVo) {
         MemberEntity memberEntity = memberRepository.findById(memberVo.getId());
@@ -29,10 +29,10 @@ public class MemberService {
 //        PasswordEncoderCustom encoder = new PasswordEncoderCustom();
 //
 //        String encryptedPassword = encoder.encrpyt(memberVo.getPassword());
-        //String encPass = passwordEncoder.encode(memberVo.getPassword());
+        String encPass = passwordEncoder.encode(memberVo.getPassword());
         MemberEntity member = MemberEntity.builder()
                 .id(memberVo.getId())
-                //.password(encPass)
+                .password(encPass)
                 .name(memberVo.getName())
                 .build();
 
@@ -43,12 +43,13 @@ public class MemberService {
     public String signin(MemberVo memberVo) {
         MemberEntity memberEntity = memberRepository.findById(memberVo.getId());
 
+        PasswordEncoderCustom encoder = new PasswordEncoderCustom();
 
-        //var matches  = passwordEncoder.matches(memberVo.getPassword(), memberEntity.getPassword());
-//
-//        if (!matches) {
-//            throw new InvalidRequest("login Fail", "로그인 실패");
-//        }
+        var matches  = passwordEncoder.matches(memberVo.getPassword(), memberEntity.getPassword());
+
+        if (!matches) {
+            throw new InvalidRequest("login Fail", "로그인 실패");
+        }
 
         return memberEntity.getId();
     }
