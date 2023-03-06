@@ -1,22 +1,23 @@
 package com.project.api.service;
 
-import com.project.api.crypto.PasswordEncoder;
+import com.project.api.crypto.PasswordEncoderCustom;
 import com.project.api.entity.MemberEntity;
 import com.project.api.exception.InvalidRequest;
 import com.project.api.repository.MemberRepository;
 import com.project.api.vo.MemberVo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class MemberService {
 
     private final MemberRepository memberRepository;
+
+    private final PasswordEncoder passwordEncoder;
 
     public MemberEntity createMember(MemberVo memberVo) {
         MemberEntity memberEntity = memberRepository.findById(memberVo.getId());
@@ -25,14 +26,14 @@ public class MemberService {
             throw new InvalidRequest("id", "이미 가입된 ID입니다.");
         }
 
-        PasswordEncoder encoder = new PasswordEncoder();
+        PasswordEncoderCustom encoder = new PasswordEncoderCustom();
 
         String encryptedPassword = encoder.encrpyt(memberVo.getPassword());
 
         MemberEntity member = MemberEntity.builder()
                 .id(memberVo.getId())
                 .password(encryptedPassword)
-                .name(memberVo.getPassword())
+                .name(memberVo.getName())
                 .build();
 
         return memberRepository.save(member);
@@ -42,9 +43,9 @@ public class MemberService {
     public String signin(MemberVo memberVo) {
         MemberEntity memberEntity = memberRepository.findById(memberVo.getId());
 
-        PasswordEncoder encoder = new PasswordEncoder();
+        PasswordEncoderCustom encoder = new PasswordEncoderCustom();
 
-        var matches  = encoder.matches(memberVo.getPassword(), memberEntity.getPassword());
+        var matches  = passwordEncoder.matches(memberVo.getPassword(), memberEntity.getPassword());
 
         if (!matches) {
             throw new InvalidRequest("login Fail", "로그인 실패");
