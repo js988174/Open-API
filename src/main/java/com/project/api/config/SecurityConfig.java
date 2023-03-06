@@ -1,8 +1,8 @@
 package com.project.api.config;
 
-import dtalk.security.token.JwtAuthFilter;
-import dtalk.security.token.JwtExceptionFilter;
-import dtalk.security.token.JwtTokenProvider;
+
+import com.project.api.config.jwt.JwtAuthFilter;
+import com.project.api.config.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
