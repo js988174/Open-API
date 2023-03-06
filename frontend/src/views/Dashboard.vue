@@ -8,43 +8,29 @@
           title="코로나 페이지 바로가기"
         >
           <template #icon>
-            <CIcon icon="cil-settings" size="xl" />
+            <CIcon :icon="cibAddthis" size="xl" />
           </template>
         </CWidgetStatsF>
       </CCol>
       <CCol :xs="4">
-        <CWidgetStatsF color="info" title="Title" value="$1.999,50">
+        <CWidgetStatsF
+          @click="goMovie"
+          color="info"
+          title="영화 페이지 바로가기"
+        >
           <template #icon>
-            <CIcon icon="cil-settings" size="xl" />
-          </template>
-          <template #footer>
-            <CLink
-              class="font-weight-bold font-xs text-medium-emphasis"
-              href="https://coreui.io/"
-              rel="noopener norefferer"
-              target="_blank"
-            >
-              View more
-              <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
-            </CLink>
+            <CIcon :icon="cibMonzo" size="xl" />
           </template>
         </CWidgetStatsF>
       </CCol>
       <CCol :xs="4">
-        <CWidgetStatsF color="warning" title="Title" value="$1.999,50">
+        <CWidgetStatsF
+          @click="goWeather"
+          color="warning"
+          title="날씨 페이지 바로가기"
+        >
           <template #icon>
-            <CIcon icon="cil-settings" size="xl" />
-          </template>
-          <template #footer>
-            <CLink
-              class="font-weight-bold font-xs text-medium-emphasis"
-              href="https://coreui.io/"
-              rel="noopener norefferer"
-              target="_blank"
-            >
-              View more
-              <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
-            </CLink>
+            <CIcon :icon="cilFlower" size="xl" />
           </template>
         </CWidgetStatsF>
       </CCol>
@@ -53,9 +39,21 @@
 </template>
 
 <script>
+import { CIcon } from '@coreui/icons-vue'
+import { cibAddthis, cibMonzo, cilFlower } from '@coreui/icons'
+
 export default {
   name: 'Dashboard',
-  components: {},
+  components: {
+    CIcon,
+  },
+  setup() {
+    return {
+      cibAddthis,
+      cibMonzo,
+      cilFlower,
+    }
+  },
   data() {
     return {
       id: '',
@@ -70,6 +68,9 @@ export default {
     },
     goMovie() {
       this.$router.push('./pages/movie')
+    },
+    goWeather() {
+      this.$router.push('./pages/weather')
     },
   },
 }
