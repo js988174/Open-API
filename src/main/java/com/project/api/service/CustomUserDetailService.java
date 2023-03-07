@@ -37,7 +37,7 @@ public class CustomUserDetailService implements UserDetailsService {
             throw new UsernameNotFoundException("사용자 이름 조회 불가능");
         }
 
-        UserDetails userDetailDTO = new UserDetailDTO(memberEntity);
+        UserDetails userDetailDTO =  new UserDetailDTO(memberEntity);
 
 
         return userDetailDTO;
