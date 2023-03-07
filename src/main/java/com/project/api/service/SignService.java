@@ -15,15 +15,12 @@ public class SignService {
 
     private final MemberRepository memberRepository;
 
-    private final PasswordEncoder passwordEncoder;
+
 
 
     public String signin(MemberVo memberVo) {
         MemberEntity memberEntity = memberRepository.findById(memberVo.getId());
-        var matches  = passwordEncoder.matches(memberVo.getPassword(), memberEntity.getPassword());
-        if (!matches) {
-            throw new InvalidRequest("login Fail", "로그인 실패");
-        }
+
 
         return memberEntity.getId();
     }

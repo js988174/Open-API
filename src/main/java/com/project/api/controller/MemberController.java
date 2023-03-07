@@ -2,6 +2,7 @@ package com.project.api.controller;
 
 import com.project.api.entity.MemberEntity;
 import com.project.api.repository.MemberRepository;
+import com.project.api.service.CustomUserDetailService;
 import com.project.api.service.MemberService;
 import com.project.api.service.SignService;
 import com.project.api.vo.MemberVo;
@@ -18,6 +19,7 @@ public class MemberController {
     private final MemberRepository memberRepository;
 
     private final MemberService memberService;
+    private final CustomUserDetailService userDetailService;
     private final SignService signService;
 
     @PostMapping("/create")
