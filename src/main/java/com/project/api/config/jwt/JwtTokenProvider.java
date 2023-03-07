@@ -17,7 +17,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class JwtTokenProvider {
-    private final String secretKey = "DSCache";
+    private final String secretKey = "asdasd4asdsdasadas46486468468468asascascasasdasdasdasdasdassdas";
     private final long tokenValidTime = 30 * 60 * 10000;
     private final MemberService signService;
 

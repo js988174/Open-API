@@ -1,10 +1,13 @@
 package com.project.api.controller;
 
+import com.project.api.config.jwt.JwtTokenProvider;
 import com.project.api.entity.MemberEntity;
 import com.project.api.repository.MemberRepository;
 import com.project.api.service.MemberService;
 import com.project.api.vo.MemberVo;
+import com.project.api.vo.UserDetailDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -16,6 +19,7 @@ public class MemberController {
 
     private final MemberRepository memberRepository;
     private final MemberService memberService;
+    private final JwtTokenProvider jwtTokenProvider;
 
 
     @PostMapping("/create")
@@ -37,8 +41,10 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public MemberVo login(@RequestBody MemberVo memberVo) {
+    public ResponseEntity<?> login(@RequestBody MemberVo memberVo) {
         memberService.signin(memberVo);
-        return memberVo;
+        UserDetailDTO userDetailDTO = (UserDetailDTO) memberService.loadUserByUsername(memberVo.getId());
+        return ResponseEntity.ok(
+                jwtTokenProvider.createToken(userDetailDTO.getUsername(), userDetailDTO.getRoles()));
     }
 }

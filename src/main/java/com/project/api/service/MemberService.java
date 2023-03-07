@@ -24,10 +24,10 @@ public class MemberService implements UserDetailsService  {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        MemberEntity memberEntity = memberRepository.findByName(username);
+        MemberEntity memberEntity = memberRepository.findById(username);
 
         if (memberEntity == null) {
-            throw new UsernameNotFoundException("사용자 이름 조회 불가능");
+            throw new UsernameNotFoundException("사용자 id 조회 불가능");
         }
 
         UserDetails userDetailDTO = new UserDetailDTO(memberEntity);

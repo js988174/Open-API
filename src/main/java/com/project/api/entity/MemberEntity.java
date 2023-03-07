@@ -28,11 +28,11 @@ public class MemberEntity {
 
 
     @Builder
-    public MemberEntity(String id, String password, String name,String role) {
+    public MemberEntity(String id, String password, String name, String role) {
         this.id = id;
         this.password = password;
         this.name = name;
-        this.role  = role;
+        this.role  = "USER";
 
     }
 }
