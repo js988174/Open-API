@@ -13,7 +13,6 @@ public class AccountContext extends User {
 
     public AccountContext(MemberEntity memberEntity, Collection<? extends GrantedAuthority> authorities) {
         super(memberEntity.getName(), memberEntity.getPassword(), authorities);
-
         this.memberEntity = memberEntity;
     }
 

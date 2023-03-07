@@ -36,11 +36,6 @@
                         Login
                       </CButton>
                     </CCol>
-                    <CCol :xs="6" class="text-right">
-                      <CButton color="link" class="px-0">
-                        비밀번호 찾기
-                      </CButton>
-                    </CCol>
                   </CRow>
                 </CForm>
               </CCardBody>
@@ -50,7 +45,12 @@
                 <div>
                   <h2>회원 가입</h2>
                   <p>다양한 API 테스트</p>
-                  <CButton color="light" variant="outline" class="mt-3">
+                  <CButton
+                    @click="goRegister"
+                    color="light"
+                    variant="outline"
+                    class="mt-3"
+                  >
                     회원가입 하로 가기
                   </CButton>
                 </div>
@@ -88,6 +88,9 @@ export default {
             this.$router.push('/dashboard')
           }
         })
+    },
+    goRegister() {
+      this.$router.push('/pages/register')
     },
   },
 }

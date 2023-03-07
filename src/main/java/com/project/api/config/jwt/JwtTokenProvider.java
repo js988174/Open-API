@@ -1,9 +1,6 @@
 package com.project.api.config.jwt;
 
-import com.project.api.service.CustomUserDetailService;
 import com.project.api.service.MemberService;
-
-import com.project.api.service.SignService;
 import com.project.api.vo.UserDetailDTO;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +19,7 @@ import java.util.List;
 public class JwtTokenProvider {
     private final String secretKey = "DSCache";
     private final long tokenValidTime = 30 * 60 * 10000;
-    private final CustomUserDetailService signService;
+    private final MemberService signService;
 
     public String createToken(String userId, List<String> roles) {
         Claims claims = Jwts.claims().setSubject(userId); // JWT payload 에 저장되는 정보단위
