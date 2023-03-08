@@ -1,5 +1,6 @@
 package com.project.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class Member {
     private String role ;
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "member")
+    @JsonIgnore
     public List<Board> boardList;
 
 

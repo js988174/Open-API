@@ -25,9 +25,8 @@ public class MemberController {
 
 
     @PostMapping("/create")
-    public MemberVo join(@RequestBody MemberVo memberVo){
+    public void join(@RequestBody MemberVo memberVo){
         memberService.createMember(memberVo);
-        return memberVo;
     }
     @GetMapping("/find")
     public Object find(Long id){
@@ -55,8 +54,8 @@ public class MemberController {
 
     @PostMapping("/loginInfo")
     public Object loginInfo() {
-        return ((UserDetailDTO) SecurityContextHolder.getContext()
-                .getAuthentication().getPrincipal()).getMember();
+
+        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
     @Data
     class MemberLoginResultDTO{
