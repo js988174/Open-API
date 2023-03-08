@@ -1,7 +1,7 @@
 package com.project.api.service;
 
 import com.project.api.crypto.PasswordEncoderCustom;
-import com.project.api.entity.MemberEntity;
+import com.project.api.entity.Member;
 import com.project.api.exception.InvalidRequest;
 import com.project.api.repository.MemberRepository;
 import com.project.api.vo.MemberVo;
@@ -10,12 +10,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-
-@Service
+@Service("MemberService")
 @RequiredArgsConstructor
 public class MemberService implements UserDetailsService  {
 
@@ -24,19 +21,19 @@ public class MemberService implements UserDetailsService  {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        MemberEntity memberEntity = memberRepository.findById(username);
+        Member member = memberRepository.findById(username);
 
-        if (memberEntity == null) {
+        if (member == null) {
             throw new UsernameNotFoundException("사용자 id 조회 불가능");
         }
 
-        UserDetails userDetailDTO = new UserDetailDTO(memberEntity);
+        UserDetails userDetailDTO = new UserDetailDTO(member);
 
         return userDetailDTO;
     }
 
-    public MemberEntity createMember(MemberVo memberVo) {
-        MemberEntity memberEntity = memberRepository.findById(memberVo.getId());
+    public Member createMember(MemberVo memberVo) {
+        Member memberEntity = memberRepository.findById(memberVo.getId());
 
         if (memberEntity != null) {
             throw new InvalidRequest("id", "이미 가입된 ID입니다.");
@@ -44,7 +41,7 @@ public class MemberService implements UserDetailsService  {
 
         String encPass = passwordEncoder.encode(memberVo.getPassword());
 
-        MemberEntity member = MemberEntity.builder()
+        Member member = Member.builder()
                 .id(memberVo.getId())
                 .password(encPass)
                 .name(memberVo.getName())
@@ -54,19 +51,19 @@ public class MemberService implements UserDetailsService  {
     }
 
     public String signin(MemberVo memberVo) {
-        MemberEntity memberEntity = memberRepository.findById(memberVo.getId());
-        var matches  = passwordEncoder.matches(memberVo.getPassword(), memberEntity.getPassword());
+        Member member = memberRepository.findById(memberVo.getId());
+        var matches  = passwordEncoder.matches(memberVo.getPassword(), member.getPassword());
         if (!matches) {
             throw new InvalidRequest("login Fail", "로그인 실패");
         }
 
-        return memberEntity.getId();
+        return member.getId();
     }
 
-    public MemberEntity findById(MemberVo memberVo) {
+    public Member findById(MemberVo memberVo) {
         return memberRepository.findById(memberVo.getId());
     }
-    public MemberEntity findByName(String name) {
+    public Member findByName(String name) {
         return memberRepository.findByName(name);
     }
 

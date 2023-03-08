@@ -1,13 +1,9 @@
 package com.project.api.vo;
 
 
-import com.project.api.entity.MemberEntity;
+import com.project.api.entity.Member;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 
@@ -35,8 +31,8 @@ public class MemberVo {
 
 
 
-    public MemberEntity getMemberEntity(){
-        MemberEntity member = MemberEntity.builder()
+    public Member getMemberEntity(){
+        Member member = Member.builder()
                 .id(getId())
                 .password(getPassword())
                 .name(getName())

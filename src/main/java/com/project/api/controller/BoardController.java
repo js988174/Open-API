@@ -1,6 +1,5 @@
 package com.project.api.controller;
 
-import com.project.api.entity.MemberEntity;
 import com.project.api.service.BoardService;
 import com.project.api.vo.BoardVo;
 import lombok.RequiredArgsConstructor;

@@ -1,13 +1,12 @@
 package com.project.api.vo;
 
-import com.project.api.entity.BoardEntity;
-import com.project.api.entity.MemberEntity;
+import com.project.api.entity.Board;
+import com.project.api.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Getter
@@ -20,8 +19,8 @@ public class BoardVo {
     private String content;
 
 
-    public BoardEntity getBoardEntity(MemberEntity member) {
-        return BoardEntity.builder()
+    public Board getBoardEntity(Member member) {
+        return Board.builder()
                 .member(member)
                 .title(getTitle())
                 .content(getContent())
@@ -29,10 +28,10 @@ public class BoardVo {
                 .build();
     }
 
-    public BoardVo(BoardEntity boardEntity){
+    public BoardVo(Board board){
 
-        this.boardNo = boardEntity.getBoardNo();
-        this.title = boardEntity.getTitle();
-        this.content = boardEntity.getContent();
+        this.boardNo = board.getBoardNo();
+        this.title = board.getTitle();
+        this.content = board.getContent();
     }
 }
