@@ -7,6 +7,7 @@ import com.project.api.repository.MemberRepository;
 import com.project.api.vo.MemberVo;
 import com.project.api.vo.UserDetailDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -31,7 +32,6 @@ public class MemberService implements UserDetailsService  {
         }
 
         UserDetails userDetailDTO = new UserDetailDTO(memberEntity);
-
         return userDetailDTO;
     }
 
