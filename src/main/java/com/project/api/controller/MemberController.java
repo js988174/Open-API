@@ -55,7 +55,8 @@ public class MemberController {
 
     @PostMapping("/loginInfo")
     public Object loginInfo() {
-        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return ((UserDetailDTO) SecurityContextHolder.getContext()
+                .getAuthentication().getPrincipal()).getMember();
     }
     @Data
     class MemberLoginResultDTO{
