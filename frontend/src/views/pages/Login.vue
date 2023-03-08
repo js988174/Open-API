@@ -70,6 +70,7 @@ export default {
     return {
       id: '',
       password: '',
+      loginInfo: '',
     }
   },
   mounted() {},
@@ -85,9 +86,16 @@ export default {
             alert(response.data.errorMessage)
           } else {
             alert('로그인이 완료되었습니다. 메인 화면으로 돌아갑니다')
+            this.myInfo()
             this.$router.push('/dashboard')
           }
         })
+    },
+    myInfo() {
+      this.$axios.post('/api/member/loginInfo').then((response) => {
+        this.loginInfo = response.data
+        console.log(this.loginInfo)
+      })
     },
     goRegister() {
       this.$router.push('/pages/register')
