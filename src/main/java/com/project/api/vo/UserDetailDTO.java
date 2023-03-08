@@ -35,10 +35,10 @@ public class UserDetailDTO  implements UserDetails {
         return collect;
     }
 
-    public Member getUser() {
+    public Member getMember() {
         return member;
     }
-    public Long getIdx(){
+    public Long getMemberNo(){
         return member.getMemberNo();
     }
     @Override

@@ -28,12 +28,9 @@ public class MemberService implements UserDetailsService  {
             throw new UsernameNotFoundException("사용자 id 조회 불가능");
         }
 
-<<<<<<< HEAD
-        UserDetails userDetailDTO = new UserDetailDTO(memberEntity);
-=======
+
         UserDetails userDetailDTO = new UserDetailDTO(member);
 
->>>>>>> 621d8358e129aca5e29a87b0ffae47fca8359076
         return userDetailDTO;
     }
 

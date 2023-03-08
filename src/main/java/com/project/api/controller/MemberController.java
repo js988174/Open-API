@@ -6,6 +6,7 @@ import com.project.api.repository.MemberRepository;
 import com.project.api.service.MemberService;
 import com.project.api.vo.MemberVo;
 import com.project.api.vo.UserDetailDTO;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +45,16 @@ public class MemberController {
     public ResponseEntity<?> login(@RequestBody MemberVo memberVo) {
         memberService.signin(memberVo);
         UserDetailDTO userDetailDTO = (UserDetailDTO) memberService.loadUserByUsername(memberVo.getId());
-        return ResponseEntity.ok(
-                jwtTokenProvider.createToken(userDetailDTO.getUsername(), userDetailDTO.getRoles()));
+        MemberLoginResultDTO memberLoginResultDTO = new MemberLoginResultDTO();
+        memberLoginResultDTO.id = userDetailDTO.getMember().getId();
+        memberLoginResultDTO.name = userDetailDTO.getMember().getName();
+        memberLoginResultDTO.token = jwtTokenProvider.createToken(userDetailDTO.getUsername(), userDetailDTO.getRoles());
+        return ResponseEntity.ok(memberLoginResultDTO);
+    }
+    @Data
+    class MemberLoginResultDTO{
+        String id;
+        String name;
+        String token;
     }
 }
