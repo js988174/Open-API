@@ -9,6 +9,7 @@ import com.project.api.vo.UserDetailDTO;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -50,6 +51,11 @@ public class MemberController {
         memberLoginResultDTO.name = userDetailDTO.getMember().getName();
         memberLoginResultDTO.token = jwtTokenProvider.createToken(userDetailDTO.getUsername(), userDetailDTO.getRoles());
         return ResponseEntity.ok(memberLoginResultDTO);
+    }
+
+    @PostMapping("/loginInfo")
+    public Object loginInfo() {
+        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
     @Data
     class MemberLoginResultDTO{
