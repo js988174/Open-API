@@ -25,8 +25,8 @@ public class MemberController {
 
 
     @PostMapping("/create")
-    public void join(@RequestBody MemberVo memberVo){
-        memberService.createMember(memberVo);
+    public Member join(@RequestBody MemberVo memberVo){
+        return memberService.createMember(memberVo);
     }
     @GetMapping("/find")
     public Object find(Long id){
