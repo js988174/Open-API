@@ -21,6 +21,7 @@ public class Member {
     private String password;
     private String name;
     private String role ;
+
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "member")
     public List<Board> boardList;
 
