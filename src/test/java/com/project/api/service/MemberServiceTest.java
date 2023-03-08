@@ -1,6 +1,6 @@
 package com.project.api.service;
 
-import com.project.api.entity.MemberEntity;
+import com.project.api.entity.Member;
 import com.project.api.repository.MemberRepository;
 import com.project.api.vo.MemberVo;
 import org.junit.jupiter.api.DisplayName;
@@ -35,10 +35,10 @@ class MemberServiceTest {
         memberService.createMember(memberVo);
 
         // then
-        MemberEntity memberEntity = memberRepository.findAll().get(0);
-        assertEquals("테스트 계정1.", memberEntity.getId());
-        assertEquals("1234.", memberEntity.getPassword());
-        assertEquals("테스트 이름1.", memberEntity.getName());
+        Member member = memberRepository.findById("테스트 계정1");
+        assertEquals("테스트 계정1.", member.getId());
+        assertEquals("1234.", member.getPassword());
+        assertEquals("테스트 이름1.", member.getName());
     }
 
 }

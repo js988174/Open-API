@@ -1,15 +1,12 @@
 package com.project.api.repository;
 
-import com.project.api.entity.MemberEntity;
-import com.project.api.vo.MemberVo;
+import com.project.api.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
-public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
-    MemberEntity findByName(String name);
+public interface MemberRepository extends JpaRepository<Member, Long> {
+    Member findByName(String name);
 
-    MemberEntity findById(String id);
+    Member findById(String id);
 }

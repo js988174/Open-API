@@ -1,6 +1,6 @@
 package com.project.api.vo;
 
-import com.project.api.entity.MemberEntity;
+import com.project.api.entity.Member;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,9 +17,9 @@ public class UserDetailDTO  implements UserDetails {
     @Transient
     private List<String> roles = new ArrayList<>();
 
-    private MemberEntity member;
+    private Member member;
 
-    public UserDetailDTO(MemberEntity member){
+    public UserDetailDTO(Member member){
         this.member = member;
     }
 
@@ -35,7 +35,7 @@ public class UserDetailDTO  implements UserDetails {
         return collect;
     }
 
-    public MemberEntity getUser() {
+    public Member getUser() {
         return member;
     }
     public Long getIdx(){

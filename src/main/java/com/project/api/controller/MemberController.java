@@ -1,7 +1,7 @@
 package com.project.api.controller;
 
 import com.project.api.config.jwt.JwtTokenProvider;
-import com.project.api.entity.MemberEntity;
+import com.project.api.entity.Member;
 import com.project.api.repository.MemberRepository;
 import com.project.api.service.MemberService;
 import com.project.api.vo.MemberVo;
@@ -29,13 +29,13 @@ public class MemberController {
     }
     @GetMapping("/find")
     public Object find(Long id){
-        Optional<MemberEntity> memberId = memberRepository.findById(id);
+        Optional<Member> memberId = memberRepository.findById(id);
         return memberId;
     }
 
     @GetMapping("/findString")
     public Object findString(String name){
-        MemberEntity member = memberRepository.findByName(name);
+        Member member = memberRepository.findByName(name);
 
         return member;
     }
