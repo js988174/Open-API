@@ -15,6 +15,6 @@
 * [코로나 API](https://github.com/dhlife09/Corona-19-API)
 * [네이버 API](https://developers.naver.com/docs/serviceapi/search/movie/movie.md)
 * [카카오 API](https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api)
-* [카카오 API](https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api)
+* [메이플 큐브 API](https://developers.nexon.com/Maplestory)
 
 
