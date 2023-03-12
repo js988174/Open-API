@@ -27,21 +27,20 @@ class MemberServiceTest {
     private static final String id = "테스트 계정1";
     private static final String name = "이름1";
 
-//    @BeforeEach
-//    void clean() {
-//        memberRepository.deleteAll();
-//    }
+    @BeforeEach
+    void clean() {
+        memberRepository.deleteAll();
+    }
     @Test
     @DisplayName("회원 생성")
     @Rollback(value = false)
     void createMember() {
         
         
-        String encodedPassword = passwordEncoder.encode(password);
         // given
         MemberVo memberVo = MemberVo.builder()
                 .id(id)
-                .password(encodedPassword)
+                .password(password)
                 .name(name)
                 .build();
 
@@ -50,7 +49,7 @@ class MemberServiceTest {
 
         // then
         Member member = memberRepository.findById(id);
-        assertTrue(passwordEncoder.matches(password, encodedPassword));
+        assertTrue(passwordEncoder.matches(password, member.getPassword()));
         assertEquals(name, member.getName());
     }
 
@@ -58,12 +57,13 @@ class MemberServiceTest {
     @DisplayName("회원 로그인")
     public void signin() {
         //given
+        createMember();
         MemberVo memberVo = MemberVo.builder()
                 .id(id)
                 .password(password)
                 .build();
 
-        
+
         //when
         UserDetailDTO userDetails  = (UserDetailDTO) memberService.signin(memberVo);
 
