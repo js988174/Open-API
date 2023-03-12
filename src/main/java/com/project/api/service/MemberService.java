@@ -25,9 +25,9 @@ public class MemberService implements UserDetailsService  {
 
         Member member = memberRepository.findById(username);
 
-        if (member == null) {
-            throw new UsernameNotFoundException("사용자 id 조회 불가능");
-        }
+//        if (member == null) {
+//            throw new UsernameNotFoundException("사용자 id 조회 불가능");
+//        }
 
 
         UserDetails userDetailDTO = new UserDetailDTO(member);

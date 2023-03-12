@@ -42,7 +42,7 @@ class MemberControllerTest {
 
     @Test
     @DisplayName("회원 생성")
-    void Hello_Test() throws Exception {
+    void memberCreate() throws Exception {
         //given
         String password = "1234";
         String encodedPassword = passwordEncoder.encode(password);
@@ -57,7 +57,7 @@ class MemberControllerTest {
         String url = "http://localhost:" + port + "/api/member/create";
 
         mvc.perform(post(url)
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(memberVo)))
                 .andExpect(status().isOk());
     }
