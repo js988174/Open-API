@@ -22,6 +22,7 @@ public class MemberService implements UserDetailsService  {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         Member member = memberRepository.findById(username);
 
         if (member == null) {
@@ -52,14 +53,14 @@ public class MemberService implements UserDetailsService  {
         return memberRepository.save(member);
     }
 
-    public String signin(MemberVo memberVo) {
-        Member member = memberRepository.findById(memberVo.getId());
-        var matches  = passwordEncoder.matches(memberVo.getPassword(), member.getPassword());
+    public UserDetails signin(MemberVo memberVo) {
+        UserDetails userDetails = loadUserByUsername(memberVo.getId());
+        var matches  = passwordEncoder.matches(memberVo.getPassword(), userDetails.getPassword());
         if (!matches) {
             throw new InvalidRequest("login Fail", "로그인 실패");
         }
 
-        return member.getId();
+        return userDetails;
     }
 
     public Member findById(MemberVo memberVo) {

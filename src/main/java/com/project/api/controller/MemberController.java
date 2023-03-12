@@ -43,8 +43,7 @@ public class MemberController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody MemberVo memberVo) {
-        memberService.signin(memberVo);
-        UserDetailDTO userDetailDTO = (UserDetailDTO) memberService.loadUserByUsername(memberVo.getId());
+        UserDetailDTO userDetailDTO =(UserDetailDTO)  memberService.signin(memberVo);
         MemberLoginResultDTO memberLoginResultDTO = new MemberLoginResultDTO();
         memberLoginResultDTO.id = userDetailDTO.getMember().getId();
         memberLoginResultDTO.name = userDetailDTO.getMember().getName();
