@@ -4,6 +4,7 @@ import com.project.api.crypto.PasswordEncoderCustom;
 import com.project.api.entity.Member;
 import com.project.api.repository.MemberRepository;
 import com.project.api.vo.MemberVo;
+import com.project.api.vo.UserDetailDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,33 +23,60 @@ class MemberServiceTest {
     MemberRepository memberRepository;
     @Autowired
     PasswordEncoderCustom passwordEncoder;
+    private static final String password = "1234";
+    private static final String id = "테스트 계정1";
+    private static final String name = "이름1";
 
-    @BeforeEach
-    void clean() {
-        memberRepository.deleteAll();
-    }
+//    @BeforeEach
+//    void clean() {
+//        memberRepository.deleteAll();
+//    }
     @Test
     @DisplayName("회원 생성")
     @Rollback(value = false)
     void createMember() {
-
-        String password = "1234";
+        
+        
         String encodedPassword = passwordEncoder.encode(password);
-
         // given
         MemberVo memberVo = MemberVo.builder()
-                .id("테스트 계정2")
+                .id(id)
                 .password(encodedPassword)
-                .name("테스트 이름1")
+                .name(name)
                 .build();
 
         // when
         memberService.createMember(memberVo);
 
         // then
-        Member member = memberRepository.findById("테스트 계정2");
+        Member member = memberRepository.findById(id);
         assertTrue(passwordEncoder.matches(password, encodedPassword));
-        assertEquals("테스트 이름1", member.getName());
+        assertEquals(name, member.getName());
     }
 
+    @Test
+    @DisplayName("회원 로그인")
+    public void signin() {
+        //given
+        MemberVo memberVo = MemberVo.builder()
+                .id(id)
+                .password(password)
+                .build();
+
+        
+        //when
+        UserDetailDTO userDetails  = (UserDetailDTO) memberService.signin(memberVo);
+
+        //then
+        assertTrue(passwordEncoder.matches(password, userDetails.getPassword()));
+        assertEquals(userDetails.getUsername() , id);
+    }
+
+    @Test
+    public void findById() {
+    }
+
+    @Test
+    public void findByName() {
+    }
 }

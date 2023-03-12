@@ -54,7 +54,9 @@ public class MemberService implements UserDetailsService  {
     }
 
     public UserDetails signin(MemberVo memberVo) {
-        UserDetails userDetails = loadUserByUsername(memberVo.getId());
+        UserDetailDTO userDetails = (UserDetailDTO)loadUserByUsername(memberVo.getId());
+        System.out.println(userDetails.getPassword());
+        System.out.println(memberVo.getPassword());
         var matches  = passwordEncoder.matches(memberVo.getPassword(), userDetails.getPassword());
         if (!matches) {
             throw new InvalidRequest("login Fail", "로그인 실패");
