@@ -49,11 +49,15 @@ public class MemberController {
         memberLoginResultDTO.name = userDetailDTO.getMember().getName();
         memberLoginResultDTO.token = jwtTokenProvider.createToken(userDetailDTO.getUsername(), userDetailDTO.getRoles());
         return ResponseEntity.ok(memberLoginResultDTO);
+
+        //get >주소에 정보를 담아
     }
 
     @PostMapping("/loginInfo")
     public Object loginInfo() {
         return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        // 버튼을 누르거나 아니면 모든 이벤트에서 필요시마다 서버에 요청하는거야
     }
     @Data
     class MemberLoginResultDTO{
