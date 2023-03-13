@@ -85,12 +85,9 @@ export default {
           if (response.data.errorCode === 400) {
             alert(response.data.errorMessage)
           } else {
-            this.$axios.create({
-              baseURL: process.env.VUE_APP_API_URL,
-              headers: {
-                Authrozation: response.data.token,
-              },
-            })
+            this.$axios.defaults.headers.common[
+              'X-AUTH-TOKEN'
+            ] = ` ${response.data.token}`
             alert('로그인이 완료되었습니다. 메인 화면으로 돌아갑니다')
             this.myInfo()
             this.$router.push('/dashboard')
