@@ -19,8 +19,9 @@ public class BoardController {
 
     @PostMapping("/write")
     public BoardVo write(@RequestBody @Valid BoardVo boardVo){
-        UserDetailDTO userDetailDTO = (UserDetailDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return boardService.saveBoard(boardVo, userDetailDTO.getMember());
+        Member member = ((UserDetailDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getMember();
+        System.out.println(member);
+        return boardService.saveBoard(boardVo, member);
     }
 
     @GetMapping("/list")

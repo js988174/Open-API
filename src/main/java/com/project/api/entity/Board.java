@@ -17,9 +17,8 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long boardNo;
 
-    @NotBlank(message = "제목을 입력해주세요.")
+
     private String title;
-    @NotBlank(message = "내용을 입력해주세요.")
     private String content;
     private LocalDate regDate;
 
