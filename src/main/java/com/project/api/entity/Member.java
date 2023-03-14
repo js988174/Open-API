@@ -29,7 +29,7 @@ public class Member {
 
 
     @Builder
-    public Member(String id, String password, String name, String role) {
+    public Member(String id, String password, String name) {
         this.id = id;
         this.password = password;
         this.name = name;

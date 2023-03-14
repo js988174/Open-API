@@ -1,10 +1,12 @@
 package com.project.api.controller;
 
+import com.project.api.entity.Member;
 import com.project.api.service.BoardService;
 import com.project.api.vo.BoardVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -13,10 +15,10 @@ import java.util.List;
 public class BoardController {
     private final BoardService boardService;
 
-//    @PostMapping("/write")
-//    public BoardVo write(@RequestBody BoardVo boardVo){
-//        return boardService.saveBoard(boardVo, new MemberEntity("id","pw","김"));
-//    }
+    @PostMapping("/write")
+    public BoardVo write(@RequestBody @Valid BoardVo boardVo){
+        return boardService.saveBoard(boardVo, new Member("id","pw","김"));
+    }
 
     @GetMapping("/list")
     public List<BoardVo> boardList(){
