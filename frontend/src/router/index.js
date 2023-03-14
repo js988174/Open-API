@@ -17,22 +17,7 @@ const routes = [
           import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard.vue'),
       },
       {
-        path: '/theme',
-        name: 'Theme',
-        redirect: '/theme/typography',
-      },
-      {
-        path: '/base',
-        name: 'Base',
-        component: {
-          render() {
-            return h(resolveComponent('router-view'))
-          },
-        },
-        redirect: '/base/breadcrumbs',
-      },
-      {
-        path: '/pages',
+        path: '/',
         redirect: '/pages/404',
         name: 'Pages',
         component: {
@@ -81,6 +66,11 @@ const routes = [
             path: 'board',
             name: 'Board',
             component: () => import('@/views/pages/Board'),
+          },
+          {
+            path: 'boardWrite',
+            name: 'BoardWrite',
+            component: () => import('@/views/pages/board/BoardWrite'),
           },
         ],
       },

@@ -14,40 +14,25 @@
           <th class="no" scope="row">1</th>
           <td class="name">이름</td>
           <td class="title">제목</td>
-          <td class="date">@날짜</td>
+          <td class="date">날짜</td>
         </tr>
       </tbody>
-      <!--]--><!---->
     </table>
-    <!--]-->
+    <CButton color="primary" variant="outline" @click="goWriter"
+      >글 쓰기</CButton
+    >
   </div>
 </template>
 
 <script>
 export default {
   name: 'Board',
+  methods: {
+    goWriter() {
+      this.$router.push('./boardWrite')
+    },
+  },
 }
 </script>
 
-<style scoped>
-.board-list {
-  width: 768px;
-  margin: auto;
-}
-
-.board-detail {
-  width: 768px;
-  margin: auto;
-  text-align: left;
-}
-
-.board-contents {
-  padding: 12px 8px;
-  border-bottom: 1px solid #eee;
-}
-
-.common-buttons {
-  padding: 8px;
-  text-align: right;
-}
-</style>
+<style scoped></style>

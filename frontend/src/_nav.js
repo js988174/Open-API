@@ -15,39 +15,60 @@ export default [
   },
   {
     component: 'CNavGroup',
-    name: 'Pages',
-    to: '/pages',
+    name: 'Member',
+    to: '/',
     icon: 'cil-star',
     items: [
       {
         component: 'CNavItem',
         name: 'Login',
-        to: '/pages/login',
+        to: '/login',
       },
       {
         component: 'CNavItem',
         name: 'Register',
-        to: '/pages/register',
+        to: '/register',
       },
+    ],
+  },
+  {
+    component: 'CNavGroup',
+    name: 'Api',
+    to: '/',
+    icon: 'cil-star',
+    items: [
       {
         component: 'CNavItem',
         name: 'Covid',
-        to: '/pages/covid',
+        to: '/covid',
       },
       {
         component: 'CNavItem',
         name: 'Weather',
-        to: '/pages/weather',
+        to: '/weather',
       },
       {
         component: 'CNavItem',
         name: 'Movie',
-        to: '/pages/movie',
+        to: '/movie',
       },
+    ],
+  },
+  {
+    component: 'CNavGroup',
+    name: 'Board',
+    to: '/',
+    icon: 'cil-star',
+    items: [
       {
         component: 'CNavItem',
         name: 'Board',
-        to: '/pages/board',
+        to: '/board',
+      },
+      {
+        component: 'CNavItem',
+        name: 'BoardWrite',
+        to: '/boardWrite',
       },
     ],
   },

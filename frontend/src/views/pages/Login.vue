@@ -102,7 +102,7 @@ export default {
       })
     },
     goRegister() {
-      this.$router.push('/pages/register')
+      this.$router.push('/register')
     },
   },
 }
