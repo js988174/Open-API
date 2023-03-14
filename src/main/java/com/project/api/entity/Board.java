@@ -1,12 +1,12 @@
 package com.project.api.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Entity
@@ -17,9 +17,11 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long boardNo;
 
+    @NotBlank(message = "제목을 입력해주세요.")
     private String title;
+    @NotBlank(message = "내용을 입력해주세요.")
     private String content;
-    private LocalDate regDay;
+    private LocalDate regDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "writer")
@@ -27,10 +29,10 @@ public class Board {
     private Member member;
 
     @Builder
-    public Board(String title, String content, LocalDate regDay, Member member) {
+    public Board(String title, String content, LocalDate regDate, Member member) {
         this.title = title;
         this.content = content;
-        this.regDay = regDay;
+        this.regDate = regDate;
         this.member = member;
     }
 }

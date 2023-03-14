@@ -24,12 +24,11 @@ public class BoardVo {
                 .member(member)
                 .title(getTitle())
                 .content(getContent())
-                .regDay(LocalDate.now())
+                .regDate(LocalDate.now())
                 .build();
     }
 
     public BoardVo(Board board){
-
         this.boardNo = board.getBoardNo();
         this.title = board.getTitle();
         this.content = board.getContent();
