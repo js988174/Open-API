@@ -47,6 +47,8 @@ public class JwtTokenProvider {
 
     // Request의 Header에서 token 값을 가져옵니다. "X-AUTH-TOKEN" : "TOKEN값'
     public String resolveToken(HttpServletRequest request) {
+        System.out.println("아아아");
+        System.out.println(request.getHeader("X-AUTH-TOKEN"));
         return request.getHeader("X-AUTH-TOKEN");
     }
 
