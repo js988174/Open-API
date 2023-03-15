@@ -18,6 +18,7 @@
         text="100글자 제한"
       ></CFormTextarea>
     </CForm>
+    <CButton color="primary" variant="outline">입력하기</CButton>
   </div>
 </template>
 
