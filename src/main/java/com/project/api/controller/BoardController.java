@@ -19,13 +19,24 @@ public class BoardController {
 
     @PostMapping("/write")
     public BoardVo write(@RequestBody @Valid BoardVo boardVo){
-        Member member = ((UserDetailDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getMember();
-        System.out.println(member);
-        return boardService.saveBoard(boardVo, member);
+
+        return boardService.saveBoard(boardVo);
     }
 
     @GetMapping("/list")
     public List<BoardVo> boardList(){
         return boardService.boardList();
     }
+
+    @DeleteMapping("/delete")
+    public void delete(@RequestParam Long id){
+
+        boardService.deleteBoard(id);
+    }
+
+    @PutMapping("/update")
+    public void update(@RequestBody BoardVo boardVo){
+        boardService.updateBoard(boardVo);
+    }
+
 }

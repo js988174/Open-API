@@ -24,14 +24,25 @@ public class Board {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "writer")
-
     private Member member;
 
+    private boolean delete;
+
     @Builder
-    public Board(String title, String content, LocalDate regDate, Member member) {
+    public Board(String title, String content, LocalDate regDate, Member member){
         this.title = title;
         this.content = content;
         this.regDate = regDate;
         this.member = member;
+        this.delete = false;
+    }
+    public void setContent(String content) {
+        this.content = content;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setDelete(boolean delete) {
+        this.delete = delete;
     }
 }
