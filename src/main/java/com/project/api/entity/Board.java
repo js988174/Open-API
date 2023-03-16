@@ -26,7 +26,7 @@ public class Board {
     @JoinColumn(name = "writer")
     private Member member;
 
-    private boolean delete;
+    private boolean deleteFlag;
 
     @Builder
     public Board(String title, String content, LocalDate regDate, Member member){
@@ -34,15 +34,13 @@ public class Board {
         this.content = content;
         this.regDate = regDate;
         this.member = member;
-        this.delete = false;
+        this.deleteFlag = false;
     }
-    public void setContent(String content) {
+    public void update(String title,String content) {
+        this.title = title;
         this.content = content;
     }
-    public void setTitle(String title) {
-        this.title = title;
-    }
     public void setDelete(boolean delete) {
-        this.delete = delete;
+        this.deleteFlag = delete;
     }
 }

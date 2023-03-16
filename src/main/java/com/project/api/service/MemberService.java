@@ -1,5 +1,7 @@
 package com.project.api.service;
 
+import com.project.api.config.jwt.JwtTokenProvider;
+import com.project.api.controller.MemberController;
 import com.project.api.crypto.PasswordEncoderCustom;
 import com.project.api.entity.Member;
 import com.project.api.exception.InvalidRequest;
@@ -15,25 +17,12 @@ import org.springframework.stereotype.Service;
 
 @Service("MemberService")
 @RequiredArgsConstructor
-public class MemberService implements UserDetailsService  {
+public class MemberService{
 
     private final MemberRepository memberRepository;
     private final PasswordEncoderCustom passwordEncoder;
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        Member member = memberRepository.findById(username);
-
-//        if (member == null) {
-//            throw new UsernameNotFoundException("사용자 id 조회 불가능");
-//        }
-
-
-        UserDetails userDetailDTO = new UserDetailDTO(member);
-
-        return userDetailDTO;
-    }
+    private final JwtTokenProvider jwtTokenProvider;
+    private final CustomUserDetailsService userDetailsService;
 
     public Member createMember(MemberVo memberVo) {
         Member memberEntity = memberRepository.findById(memberVo.getId());
@@ -53,16 +42,15 @@ public class MemberService implements UserDetailsService  {
         return memberRepository.save(member);
     }
 
-    public UserDetails signin(MemberVo memberVo) {
-        UserDetailDTO userDetails = (UserDetailDTO)loadUserByUsername(memberVo.getId());
-        System.out.println(userDetails.getPassword());
-        System.out.println(memberVo.getPassword());
+    public String signin(MemberVo memberVo) {
+        UserDetailDTO userDetails = (UserDetailDTO)userDetailsService.loadUserByUsername(memberVo.getId());
         var matches  = passwordEncoder.matches(memberVo.getPassword(), userDetails.getPassword());
         if (!matches) {
             throw new InvalidRequest("login Fail", "로그인 실패");
-        }
-
-        return userDetails;
+        };
+        String token =
+                jwtTokenProvider.createToken(userDetails.getUsername(), userDetails.getRoles());
+        return token;
     }
 
     public Member findById(MemberVo memberVo) {

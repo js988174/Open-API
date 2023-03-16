@@ -19,16 +19,14 @@ import java.util.stream.Collectors;
 public class BoardService {
     private final BoardRepository boardRepository;
 
-    public BoardVo saveBoard(BoardVo boardVo){
-        try{
-            Member member =
-                    ((UserDetailDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getMember();
-            Board board = boardVo.getBoardEntity(member);
-            boardRepository.save(board);
-        }catch (ClassCastException castException){
-            log.error("토큰 X");
-        }
-        return boardVo;
+    public Long saveBoard(BoardVo boardVo){
+
+        Member member =
+                ((UserDetailDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getMember();
+        Board board = boardVo.getBoardEntity(member);
+        boardRepository.save(board);
+
+        return board.getBoardNo();
     }
 
     public List<BoardVo> boardList(){
@@ -47,7 +45,7 @@ public class BoardService {
 
     public void updateBoard(BoardVo boardVo){
         Board board = this.findBoard(boardVo.getBoardNo());
-        board.setTitle(boardVo.getTitle());
-        board.setContent(boardVo.getContent());
+        board.update(boardVo.getTitle(),board.getContent());
+
     }
 }

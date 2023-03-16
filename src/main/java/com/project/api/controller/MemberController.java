@@ -43,12 +43,9 @@ public class MemberController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody MemberVo memberVo) {
-        UserDetailDTO userDetailDTO =(UserDetailDTO)  memberService.signin(memberVo);
-        MemberLoginResultDTO memberLoginResultDTO = new MemberLoginResultDTO();
-        memberLoginResultDTO.id = userDetailDTO.getMember().getId();
-        memberLoginResultDTO.name = userDetailDTO.getMember().getName();
-        memberLoginResultDTO.token = jwtTokenProvider.createToken(userDetailDTO.getUsername(), userDetailDTO.getRoles());
-        return ResponseEntity.ok(memberLoginResultDTO);
+        String token = memberService.signin(memberVo);
+
+        return ResponseEntity.ok(token);
 
         //get >주소에 정보를 담아
     }
@@ -59,10 +56,5 @@ public class MemberController {
 
         // 버튼을 누르거나 아니면 모든 이벤트에서 필요시마다 서버에 요청하는거야
     }
-    @Data
-    class MemberLoginResultDTO{
-        String id;
-        String name;
-        String token;
-    }
+
 }

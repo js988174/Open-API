@@ -1,5 +1,6 @@
 package com.project.api.controller;
 
+import com.project.api.entity.Board;
 import com.project.api.entity.Member;
 import com.project.api.service.BoardService;
 import com.project.api.vo.BoardVo;
@@ -18,7 +19,7 @@ public class BoardController {
     private final BoardService boardService;
 
     @PostMapping("/write")
-    public BoardVo write(@RequestBody @Valid BoardVo boardVo){
+    public Long write(@RequestBody @Valid BoardVo boardVo){
 
         return boardService.saveBoard(boardVo);
     }

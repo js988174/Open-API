@@ -1,5 +1,6 @@
 package com.project.api.service;
 
+import com.project.api.config.jwt.JwtTokenProvider;
 import com.project.api.crypto.PasswordEncoderCustom;
 import com.project.api.entity.Member;
 import com.project.api.repository.MemberRepository;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -23,6 +26,8 @@ class MemberServiceTest {
     MemberRepository memberRepository;
     @Autowired
     PasswordEncoderCustom passwordEncoder;
+    @Autowired
+    JwtTokenProvider jwtTokenProvider;
     private static final String password = "1234";
     private static final String id = "테스트 계정1";
     private static final String name = "이름1";
@@ -63,13 +68,15 @@ class MemberServiceTest {
                 .password(password)
                 .build();
 
-
         //when
-        UserDetailDTO userDetails  = (UserDetailDTO) memberService.signin(memberVo);
+        String token  = memberService.signin(memberVo);
 
         //then
-        assertTrue(passwordEncoder.matches(password, userDetails.getPassword()));
-        assertEquals(userDetails.getUsername() , id);
+        try {
+            assertTrue((jwtTokenProvider.validateToken(token)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
