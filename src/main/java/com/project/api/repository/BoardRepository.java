@@ -19,4 +19,5 @@ public interface BoardRepository  extends JpaRepository<Board, Long> {
     @Query(value = "select b from Board b join b.member" )
     @BatchSize(size = 3)
     Page<Board> findAll(Pageable pageable);
+
 }

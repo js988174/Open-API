@@ -11,8 +11,6 @@ import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Getter
-@Setter
-@ToString
 @NoArgsConstructor
 public class BoardListVo {
 

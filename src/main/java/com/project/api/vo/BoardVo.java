@@ -23,6 +23,7 @@ public class BoardVo {
     private String content;
 
 
+
     public Board getBoardEntity(Member member) {
         return Board.builder()
                 .member(member)

@@ -32,10 +32,26 @@ export default {
   components: {
     AppBreadcrumb,
   },
+  data() {
+    return {
+      loginInfo: '',
+    }
+  },
   setup() {
     return {
       logo,
     }
+  },
+  mounted() {
+    this.myInfo()
+  },
+  methods: {
+    myInfo() {
+      this.$axios.post('/api/member/loginInfo').then((response) => {
+        this.loginInfo = response.data
+        console.log(this.loginInfo)
+      })
+    },
   },
 }
 </script>

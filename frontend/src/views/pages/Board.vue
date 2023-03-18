@@ -9,12 +9,12 @@
           <th class="date" scope="col">날짜</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-for="item in boardDataList" v-bind:key="item">
         <tr>
-          <th class="no" scope="row">1</th>
-          <td class="name">이름</td>
-          <td class="title">제목</td>
-          <td class="date">날짜</td>
+          <th class="no" scope="row">{{ item.boardNo }}</th>
+          <td class="name">{{ item.writer }}</td>
+          <td class="title">{{ item.title }}</td>
+          <td class="date">{{ item.regDate }}</td>
         </tr>
       </tbody>
     </table>
@@ -27,9 +27,27 @@
 <script>
 export default {
   name: 'Board',
+  data() {
+    return {
+      boardDataList: [],
+    }
+  },
+  mounted() {
+    this.boardList()
+  },
   methods: {
     goWriter() {
       this.$router.push('./boardWrite')
+    },
+    boardList() {
+      this.$axios.get('/api/board/list').then((response) => {
+        if (response.data.errorCode === 400) {
+          alert(response.data.errorMessage)
+        } else {
+          this.boardDataList = response.data.result
+          console.log(this.boardDataList)
+        }
+      })
     },
   },
 }
