@@ -15,6 +15,6 @@ import java.util.List;
 public interface BoardRepository  extends JpaRepository<Board, Long> {
     List<Board> findByMember(Member member);
 
-    @Query("select b from Board b join fetch Member")
+    @Query(value = "select b from Board b join fetch Member" , nativeQuery = true)
     Page<Board> findAll(Pageable pageable);
 }
