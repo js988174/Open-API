@@ -3,10 +3,14 @@ package com.project.api.service;
 import com.project.api.entity.Board;
 import com.project.api.entity.Member;
 import com.project.api.repository.BoardRepository;
+import com.project.api.vo.BoardListVo;
 import com.project.api.vo.BoardVo;
+import com.project.api.vo.ListResult;
 import com.project.api.vo.UserDetailDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -29,10 +33,17 @@ public class BoardService {
         return board.getBoardNo();
     }
 
-    public List<BoardVo> boardList(){
-        List<BoardVo> boardVoList = boardRepository.findAll().stream()
-                .map(BoardVo::new).collect(Collectors.toList());
-        return boardVoList;
+    public ListResult boardList(int pageNo){
+        int pageItemCount = 3;
+        int currPage = pageNo*pageItemCount;
+        PageRequest pageable = PageRequest.of(currPage,pageItemCount);
+        Page<Board> boardVoList = boardRepository.findAll(pageable);
+        ListResult<Integer , List<BoardListVo>> result
+                = new ListResult<>(boardVoList.getTotalPages() ,
+                boardVoList.toList().stream().map(BoardListVo::new)
+                        .collect(Collectors.toList()));
+
+        return result;
     }
     public Board findBoard(Long id){
         Board board = boardRepository.findById(id).get();

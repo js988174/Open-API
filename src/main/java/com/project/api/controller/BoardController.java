@@ -4,6 +4,7 @@ import com.project.api.entity.Board;
 import com.project.api.entity.Member;
 import com.project.api.service.BoardService;
 import com.project.api.vo.BoardVo;
+import com.project.api.vo.ListResult;
 import com.project.api.vo.UserDetailDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,12 +24,15 @@ public class BoardController {
     @PostMapping("/write")
     public Result write(@RequestBody @Valid BoardVo boardVo){
 
-        return new Result(boardService.saveBoard(boardVo));
+        return new Result(boardService.saveBoard(boardVo)); //Long
     }
 
     @GetMapping("/list")
-    public Result boardList(){
-        return new Result<>(boardService.boardList());
+    public ListResult boardList(
+            @RequestParam(defaultValue = "1",
+                    required = false)
+                    Integer pageNo){
+        return boardService.boardList(pageNo); // BoardListVo
     }
 
     @DeleteMapping("/delete")
