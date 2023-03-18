@@ -35,7 +35,7 @@ public class BoardService {
 
     public ListResult boardList(int pageNo){
         int pageItemCount = 3;
-        int currPage = pageNo*pageItemCount;
+        int currPage = (pageNo-1)*pageItemCount;
         PageRequest pageable = PageRequest.of(currPage,pageItemCount);
         Page<Board> boardVoList = boardRepository.findAll(pageable);
         ListResult<Integer , List<BoardListVo>> result
