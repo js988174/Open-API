@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -33,10 +34,7 @@ public class BoardService {
         return board.getBoardNo();
     }
 
-    public ListResult boardList(int pageNo){
-        int pageItemCount = 3;
-        int currPage = (pageNo-1)*pageItemCount;
-        PageRequest pageable = PageRequest.of(currPage,pageItemCount);
+    public ListResult boardList(Pageable pageable){
         Page<Board> boardVoList = boardRepository.findAll(pageable);
         ListResult<Integer , List<BoardListVo>> result
                 = new ListResult<>(boardVoList.getTotalPages() ,

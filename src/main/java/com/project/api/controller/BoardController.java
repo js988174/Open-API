@@ -9,6 +9,9 @@ import com.project.api.vo.UserDetailDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,10 +31,9 @@ public class BoardController {
 
     @GetMapping("/list")
     public ListResult boardList(
-            @RequestParam(defaultValue = "1",
-                    required = false)
-                    Integer pageNo){
-        return boardService.boardList(pageNo); // BoardListVo
+            @PageableDefault(sort = "id", size = 5, direction = Sort.Direction.DESC)
+            Pageable pageable){
+        return boardService.boardList(pageable); // BoardListVo
     }
 
     @DeleteMapping("/delete")
