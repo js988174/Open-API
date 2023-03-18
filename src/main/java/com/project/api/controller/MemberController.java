@@ -6,6 +6,7 @@ import com.project.api.repository.MemberRepository;
 import com.project.api.service.MemberService;
 import com.project.api.vo.MemberVo;
 import com.project.api.vo.UserDetailDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -25,28 +26,28 @@ public class MemberController {
 
 
     @PostMapping("/create")
-    public Member join(@RequestBody MemberVo memberVo){
-        return memberService.createMember(memberVo);
+    public Result join(@RequestBody MemberVo memberVo){
+
+        return new Result(memberService.createMember(memberVo));
     }
     @GetMapping("/find")
-    public Object find(Long id){
+    public Result find(Long id){
         Optional<Member> memberId = memberRepository.findById(id);
-        return memberId;
+        return new Result(memberId.get());
     }
 
-    @GetMapping("/findString")
-    public Object findString(String name){
-        Member member = memberRepository.findByName(name);
-
-        return member;
-    }
+//    @GetMapping("/findString")
+//    public Object findString(String name){
+//        Member member = memberRepository.findByName(name);
+//
+//        return new Result(memberService.createMember(member));;
+//    }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody MemberVo memberVo) {
+    public Result login(@RequestBody MemberVo memberVo) {
         String token = memberService.signin(memberVo);
 
-        return ResponseEntity.ok(token);
-
+        return new Result<>(token);
         //get >주소에 정보를 담아
     }
 
@@ -56,5 +57,9 @@ public class MemberController {
 
         // 버튼을 누르거나 아니면 모든 이벤트에서 필요시마다 서버에 요청하는거야
     }
-
+    @Data
+    @AllArgsConstructor
+    static class Result<T>{
+        private T Result;
+    }
 }

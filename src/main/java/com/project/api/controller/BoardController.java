@@ -5,6 +5,8 @@ import com.project.api.entity.Member;
 import com.project.api.service.BoardService;
 import com.project.api.vo.BoardVo;
 import com.project.api.vo.UserDetailDTO;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -19,14 +21,14 @@ public class BoardController {
     private final BoardService boardService;
 
     @PostMapping("/write")
-    public Long write(@RequestBody @Valid BoardVo boardVo){
+    public Result write(@RequestBody @Valid BoardVo boardVo){
 
-        return boardService.saveBoard(boardVo);
+        return new Result(boardService.saveBoard(boardVo));
     }
 
     @GetMapping("/list")
-    public List<BoardVo> boardList(){
-        return boardService.boardList();
+    public Result boardList(){
+        return new Result<>(boardService.boardList());
     }
 
     @DeleteMapping("/delete")
@@ -40,4 +42,9 @@ public class BoardController {
         boardService.updateBoard(boardVo);
     }
 
+    @Data
+    @AllArgsConstructor
+    static class Result<T>{
+        private T Result;
+    }
 }
