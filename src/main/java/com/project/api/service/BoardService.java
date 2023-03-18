@@ -31,7 +31,7 @@ public class BoardService {
 
     public List<BoardVo> boardList(){
         List<BoardVo> boardVoList = boardRepository.findAll().stream()
-                .map(board -> new BoardVo(board)).collect(Collectors.toList());
+                .map(BoardVo::new).collect(Collectors.toList());
         return boardVoList;
     }
     public Board findBoard(Long id){
