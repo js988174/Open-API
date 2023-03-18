@@ -51,7 +51,7 @@ public class MemberController {
         //get >주소에 정보를 담아
     }
 
-    @PostMapping("/loginInfo")
+    @GetMapping("/loginInfo")
     public Object loginInfo() {
         return new Result(
                 (
@@ -63,6 +63,6 @@ public class MemberController {
     @Data
     @AllArgsConstructor
     static class Result<T>{
-        private T Result;
+        private T result;
     }
 }
