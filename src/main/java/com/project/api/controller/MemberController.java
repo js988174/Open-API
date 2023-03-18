@@ -54,9 +54,7 @@ public class MemberController {
     @GetMapping("/loginInfo")
     public Object loginInfo() {
         return new Result(
-                (
-                    (UserDetailDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal()
-                ).getMember()
+                ((UserDetailDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getMember()
 
         );
     }

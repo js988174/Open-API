@@ -96,7 +96,7 @@ export default {
         })
     },
     myInfo() {
-      this.$axios.post('/api/member/loginInfo').then((response) => {
+      this.$axios.get('/api/member/loginInfo').then((response) => {
         this.loginInfo = response.data
         console.log(this.loginInfo)
       })

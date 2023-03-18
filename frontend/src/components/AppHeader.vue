@@ -12,7 +12,7 @@
           <CNavLink href="/dashboard"> Dashboard </CNavLink>
         </CNavItem>
         <CNavItem>
-          <CNavLink href="#">Users</CNavLink>
+          <CNavLink href="#">{{ loginInfo }} 반갑습니다.</CNavLink>
         </CNavItem>
       </CHeaderNav>
       <CHeaderNav> </CHeaderNav>
@@ -47,9 +47,9 @@ export default {
   },
   methods: {
     myInfo() {
-      this.$axios.post('/api/member/loginInfo').then((response) => {
-        this.loginInfo = response.data
-        console.log(this.loginInfo)
+      this.$axios.get('/api/member/loginInfo').then((response) => {
+        this.loginInfo = response.data.result.id
+        console.log(this.loginInfo.username)
       })
     },
   },
