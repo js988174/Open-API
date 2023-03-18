@@ -53,9 +53,12 @@ public class MemberController {
 
     @PostMapping("/loginInfo")
     public Object loginInfo() {
-        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return new Result(
+                (
+                    (UserDetailDTO)SecurityContextHolder.getContext().getAuthentication().getPrincipal()
+                ).getMember()
 
-        // 버튼을 누르거나 아니면 모든 이벤트에서 필요시마다 서버에 요청하는거야
+        );
     }
     @Data
     @AllArgsConstructor
