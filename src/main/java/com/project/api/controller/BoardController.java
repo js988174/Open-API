@@ -26,7 +26,7 @@ public class BoardController {
 
     @PostMapping("/write")
     public Result write(@RequestBody @Valid BoardVo boardVo){
-        return new Result(boardService.saveBoard(boardVo));
+        return new Result(boardService.saveBoard(boardVo)); //Long
     }
 
     @GetMapping("/list")
