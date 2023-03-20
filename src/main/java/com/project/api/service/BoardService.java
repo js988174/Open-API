@@ -15,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,7 +48,7 @@ public class BoardService {
         Board board = boardRepository.findById(id)
                 .orElseThrow(BoardNotFound::new);
 
-       boardRepository.findById(id).get();
+       boardRepository.findById(id);
         return board;
     }
     public void deleteBoard(Long id){
@@ -56,12 +57,11 @@ public class BoardService {
 
         board.setDelete(true);
     }
-
+    @Transactional
     public void updateBoard(Long id, BoardVo boardVo){
         Board board = boardRepository.findById(id)
                 .orElseThrow(BoardNotFound::new);
 
-        board = this.findBoard(boardVo.getBoardNo());
         board.update(boardVo.getTitle(),board.getContent());
 
     }
