@@ -6,6 +6,7 @@ import com.project.api.entity.Member;
 import com.project.api.repository.MemberRepository;
 import com.project.api.vo.MemberVo;
 import com.project.api.vo.UserDetailDTO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -80,8 +81,18 @@ class MemberServiceTest {
     }
 
     @Test
+    @DisplayName("아이디 찾기")
     public void findById() {
+        MemberVo memberVo = MemberVo.builder()
+                .id(id)
+                .password(password)
+                .name(name)
+                .build();
 
+        Member findByMember = memberService.findById(memberVo);
+
+        Assertions.assertNotNull(findByMember);
+        assertEquals("테스트 계정1", memberVo.getId());
     }
 
     @Test

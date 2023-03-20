@@ -2,6 +2,7 @@ package com.project.api.service;
 
 import com.project.api.entity.Board;
 import com.project.api.entity.Member;
+import com.project.api.exception.BoardNotFound;
 import com.project.api.repository.BoardRepository;
 import com.project.api.vo.BoardListVo;
 import com.project.api.vo.BoardVo;
@@ -43,16 +44,24 @@ public class BoardService {
         return result;
     }
     public Board findBoard(Long id){
-        Board board = boardRepository.findById(id).get();
+        Board board = boardRepository.findById(id)
+                .orElseThrow(BoardNotFound::new);
+
+       boardRepository.findById(id).get();
         return board;
     }
     public void deleteBoard(Long id){
-        Board board = this.findBoard(id);
+        Board board = boardRepository.findById(id)
+                .orElseThrow(BoardNotFound::new);
+
         board.setDelete(true);
     }
 
-    public void updateBoard(BoardVo boardVo){
-        Board board = this.findBoard(boardVo.getBoardNo());
+    public void updateBoard(Long id, BoardVo boardVo){
+        Board board = boardRepository.findById(id)
+                .orElseThrow(BoardNotFound::new);
+
+        board = this.findBoard(boardVo.getBoardNo());
         board.update(boardVo.getTitle(),board.getContent());
 
     }
