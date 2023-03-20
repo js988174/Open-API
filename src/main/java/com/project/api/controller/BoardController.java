@@ -38,7 +38,6 @@ public class BoardController {
 
     @DeleteMapping("/delete")
     public void delete(@RequestParam Long id){
-
         boardService.deleteBoard(id);
     }
 

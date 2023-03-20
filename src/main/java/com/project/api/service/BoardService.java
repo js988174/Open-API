@@ -36,8 +36,7 @@ public class BoardService {
 
     public ListResult boardList(Pageable pageable){
         Page<Board> boardVoList = boardRepository.findAll(pageable);
-        ListResult<Integer , List<BoardListVo>> result
-                = new ListResult<>(boardVoList.getTotalPages() ,
+        ListResult<Integer , List<BoardListVo>> result = new ListResult<>(boardVoList.getTotalPages() ,
                 boardVoList.toList().stream().map(BoardListVo::new)
                         .collect(Collectors.toList()));
 

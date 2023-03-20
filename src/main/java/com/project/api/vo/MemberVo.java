@@ -29,8 +29,6 @@ public class MemberVo {
         this.name = name;
     }
 
-
-
     public Member getMemberEntity(){
         Member member = Member.builder()
                 .id(getId())
