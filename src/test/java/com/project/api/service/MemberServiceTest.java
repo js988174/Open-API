@@ -83,6 +83,7 @@ class MemberServiceTest {
     @Test
     @DisplayName("아이디 찾기")
     public void findById() {
+        createMember();
         MemberVo memberVo = MemberVo.builder()
                 .id(id)
                 .password(password)
@@ -92,7 +93,7 @@ class MemberServiceTest {
         Member findByMember = memberService.findById(memberVo);
 
         Assertions.assertNotNull(findByMember);
-        assertEquals("테스트 계정1", memberVo.getId());
+        assertEquals(findByMember.getId(), memberVo.getId());
     }
 
     @Test
