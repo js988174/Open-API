@@ -1,5 +1,6 @@
 package com.project.api.entity;
 
+import com.project.api.vo.BoardEditorVo;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -40,11 +41,17 @@ public class Board {
         this.member = member;
         this.deleteFlag = false;
     }
-    public void update(String title,String content) {
-        this.title = title;
-        this.content = content;
+    public void update(BoardEditorVo boardEditorVo) {
+        this.title = boardEditorVo.getTitle();
+        this.content = boardEditorVo.getContent();
     }
     public void setDelete(boolean delete) {
         this.deleteFlag = delete;
+    }
+
+    public BoardEditorVo.BoardEditorVoBuilder toEditor() {
+        return  BoardEditorVo.builder()
+                .title(title)
+                .content(content);
     }
 }

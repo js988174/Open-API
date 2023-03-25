@@ -4,6 +4,7 @@ import com.project.api.entity.Board;
 import com.project.api.entity.Member;
 import com.project.api.exception.BoardNotFound;
 import com.project.api.repository.BoardRepository;
+import com.project.api.vo.BoardEditorVo;
 import com.project.api.vo.BoardListVo;
 import com.project.api.vo.BoardVo;
 import com.project.api.response.BoardListResult;
@@ -64,20 +65,18 @@ public class BoardService {
         board.setDelete(true);
         return board.getBoardNo();
     }
-    @Transactional
-    public Long updateBoard( BoardVo boardVo){
-        System.out.println("어머머");
+
+    public void updateBoard(BoardVo boardVo){
         Board board = boardRepository.findById(boardVo.getBoardNo())
                 .orElseThrow(BoardNotFound::new);
 
-        board.update(boardVo.getTitle(),board.getContent());
+        BoardEditorVo.BoardEditorVoBuilder editorBuilder = board.toEditor();
 
-        System.out.println(board.getTitle());
-        System.out.println(board.getContent());
+        BoardEditorVo boardEditorVo = editorBuilder.title(boardVo.getTitle())
+                .content(boardVo.getContent())
+                .build();
 
 
-        boardRepository.save(board);
-
-        return board.getBoardNo();
+        board.update(boardEditorVo);
     }
 }
