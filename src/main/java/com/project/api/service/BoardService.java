@@ -4,6 +4,7 @@ import com.project.api.entity.Board;
 import com.project.api.entity.Member;
 import com.project.api.exception.BoardNotFound;
 import com.project.api.repository.BoardRepository;
+import com.project.api.vo.BoardEditorVo;
 import com.project.api.vo.BoardListVo;
 import com.project.api.vo.BoardVo;
 import com.project.api.response.BoardListResult;
@@ -65,11 +66,17 @@ public class BoardService {
         return board.getBoardNo();
     }
     @Transactional
-    public Long updateBoard(Long id, BoardVo boardVo){
+    public void updateBoard(Long id, BoardVo boardVo){
         Board board = boardRepository.findById(id)
                 .orElseThrow(BoardNotFound::new);
 
-        board.update(boardVo.getTitle(),board.getContent());
-        return board.getBoardNo();
+        BoardEditorVo.BoardEditorVoBuilder editorBuilder = board.toEditor();
+
+        BoardEditorVo boardEditorVo = editorBuilder.title(boardVo.getTitle())
+                .content(boardVo.getContent())
+                .build();
+
+
+        board.update(boardEditorVo);
     }
 }

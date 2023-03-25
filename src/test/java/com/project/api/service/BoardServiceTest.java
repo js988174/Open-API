@@ -7,6 +7,7 @@ import com.project.api.vo.BoardListVo;
 import com.project.api.vo.BoardVo;
 import com.project.api.vo.MemberVo;
 import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -130,13 +131,12 @@ class BoardServiceTest {
         boardVo2.setContent("테스트 1글 내용 수정");
 
         //when
-        Long id2 = boardService.updateBoard(id , boardVo2);
+        boardService.updateBoard(id , boardVo2);
         Board findBoard = boardService.findBoard(id);
 
 
         //then
-        assertEquals(id,id2);
-        assertEquals(findBoard.getTitle(),boardVo2.getTitle());
-        assertEquals(findBoard.getContent(),boardVo2.getContent());
+        Assertions.assertEquals("테스트 1글 제목 수정", findBoard.getTitle());
+        Assertions.assertEquals(findBoard.getContent(), boardVo2.getContent());
     }
 }

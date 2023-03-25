@@ -1,0 +1,21 @@
+package com.project.api.vo;
+
+import com.project.api.entity.Board;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+
+@Getter
+@NoArgsConstructor
+public class BoardEditorVo {
+    private String title;
+    private String content;
+
+    @Builder
+    public BoardEditorVo(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+}
