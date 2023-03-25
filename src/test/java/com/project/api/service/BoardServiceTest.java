@@ -126,11 +126,12 @@ class BoardServiceTest {
         boardVo.setContent("테스트 1글 내용");
         Long id = boardService.saveBoard(boardVo);
         BoardVo boardVo2 = new BoardVo();
-        boardVo2.setTitle("테스트 1글 제목 수정");
-        boardVo2.setContent("테스트 1글 내용 수정");
 
+        boardVo2.setContent("테스트 1글 내용 수정");
+        boardVo2.setTitle("테스트 1글 제목 수정");
+        System.out.println(boardVo2.getContent());
         //when
-        Long id2 = boardService.updateBoard(id , boardVo2);
+        Long id2 = boardService.updateBoard(boardVo2);
         Board findBoard = boardService.findBoard(id);
 
 

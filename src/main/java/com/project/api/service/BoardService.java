@@ -65,11 +65,19 @@ public class BoardService {
         return board.getBoardNo();
     }
     @Transactional
-    public Long updateBoard(Long id, BoardVo boardVo){
-        Board board = boardRepository.findById(id)
+    public Long updateBoard( BoardVo boardVo){
+        System.out.println("어머머");
+        Board board = boardRepository.findById(boardVo.getBoardNo())
                 .orElseThrow(BoardNotFound::new);
 
         board.update(boardVo.getTitle(),board.getContent());
+
+        System.out.println(board.getTitle());
+        System.out.println(board.getContent());
+
+
+        boardRepository.save(board);
+
         return board.getBoardNo();
     }
 }

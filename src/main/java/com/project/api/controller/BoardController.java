@@ -37,8 +37,8 @@ public class BoardController {
     }
 
     @PutMapping("/update")
-    public void update(@RequestBody Long id, BoardVo boardVo){
-        boardService.updateBoard(id, boardVo);
+    public void update(@RequestBody BoardVo boardVo){
+        boardService.updateBoard(boardVo);
     }
 
     @Data
