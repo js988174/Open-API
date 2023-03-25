@@ -13,6 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Rollback;
 
@@ -34,6 +35,8 @@ class MemberServiceTest {
     PasswordEncoderCustom passwordEncoder;
     @Autowired
     JwtTokenProvider jwtTokenProvider;
+
+
     private static final String password = "1234";
     private static final String id = "테스트 계정1";
     private static final String name = "이름1";
@@ -108,7 +111,7 @@ class MemberServiceTest {
 
     @Test
     @DisplayName("회원 리스트")
-    public void memberList(Pageable pageable) {
+    public void memberList() {
         // given
         List<Member> memberList = IntStream.range(0, 20)
                 .mapToObj(i -> Member.builder()
@@ -119,12 +122,13 @@ class MemberServiceTest {
                 .collect(Collectors.toList());
         memberRepository.saveAll(memberList);
 
+        PageRequest pageable = PageRequest.of(0, 10);
         // when
         ListResult allList = memberService.findAllList(pageable);
         System.out.println(allList.getResult());
 
         // then
-        assertEquals(20, allList.getTotalCount());
+        assertEquals(2, allList.getTotalCount());
 
     }
 }
