@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
@@ -16,8 +17,9 @@ import java.util.List;
 public interface BoardRepository  extends JpaRepository<Board, Long> {
     List<Board> findByMember(Member member);
 
-    @Query(value = "select b from Board b" )
-    @BatchSize(size = 3)
+    @Query(value = "select b from Board b join b.member" )
+    @BatchSize(size = 5)
+    @Transactional(readOnly = true)
     Page<Board> findAll(Pageable pageable);
 
 }

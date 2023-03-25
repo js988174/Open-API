@@ -29,17 +29,18 @@ public class BoardService {
 
         Member member =
                 ((UserDetailDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getMember();
+
         Board board = boardVo.getBoardEntity(member);
         boardRepository.save(board);
-
         return board.getBoardNo();
     }
 
     public BoardListResult boardList(Pageable pageable){
         Page<Board> boardVoList = boardRepository.findAll(pageable);
-        BoardListResult<Integer , List<BoardListVo>> result = new BoardListResult<>(boardVoList.getTotalPages() ,
-                boardVoList.toList().stream().map(BoardListVo::new)
-                        .collect(Collectors.toList()));
+        BoardListResult<Integer , List<BoardListVo>> result = new BoardListResult<>(
+                boardVoList.getTotalPages() ,
+                boardVoList.toList().stream().map(BoardListVo::new).collect(Collectors.toList())
+        );
 
         return result;
     }
