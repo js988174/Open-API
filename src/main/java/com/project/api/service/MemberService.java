@@ -5,10 +5,9 @@ import com.project.api.crypto.PasswordEncoderCustom;
 import com.project.api.entity.Member;
 import com.project.api.exception.InvalidRequest;
 import com.project.api.repository.MemberRepository;
-import com.project.api.vo.MemberListVo;
-import com.project.api.vo.MemberVo;
-import com.project.api.vo.UserDetailDTO;
+import com.project.api.vo.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -60,10 +59,14 @@ public class MemberService{
         return memberRepository.findByName(name);
     }
 
-    public List<MemberListVo> memberList(Pageable pageable) {
-        return memberRepository.findAll(pageable).stream()
-                .map(MemberListVo::new)
-                .collect(Collectors.toList());
+    public ListResult findAllList(Pageable pageable) {
+        Page<Member> memberList = memberRepository.findAll(pageable);
+        ListResult<Integer, List<MemberListVo>> resultList = new ListResult<>(memberList.getTotalPages(),
+                memberList.toList().stream()
+                        .map(MemberListVo::new)
+                        .collect(Collectors.toList()));
+
+        return resultList;
     }
 
 

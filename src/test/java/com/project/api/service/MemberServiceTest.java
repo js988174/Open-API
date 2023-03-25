@@ -4,6 +4,7 @@ import com.project.api.config.jwt.JwtTokenProvider;
 import com.project.api.crypto.PasswordEncoderCustom;
 import com.project.api.entity.Member;
 import com.project.api.repository.MemberRepository;
+import com.project.api.vo.ListResult;
 import com.project.api.vo.MemberVo;
 import com.project.api.vo.UserDetailDTO;
 import org.junit.jupiter.api.Assertions;
@@ -12,9 +13,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Rollback;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -97,6 +102,29 @@ class MemberServiceTest {
     }
 
     @Test
+    @DisplayName("이름 찾기")
     public void findByName() {
+    }
+
+    @Test
+    @DisplayName("회원 리스트")
+    public void memberList(Pageable pageable) {
+        // given
+        List<Member> memberList = IntStream.range(0, 20)
+                .mapToObj(i -> Member.builder()
+                        .id("id - " + i)
+                        .password("pw - " + i)
+                        .name("이름 - " + i)
+                        .build())
+                .collect(Collectors.toList());
+        memberRepository.saveAll(memberList);
+
+        // when
+        ListResult allList = memberService.findAllList(pageable);
+        System.out.println(allList.getResult());
+
+        // then
+        assertEquals(20, allList.getTotalCount());
+
     }
 }
