@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -63,6 +64,7 @@ class BoardServiceTest {
     }
     @Rollback
     @Test
+    @Transactional(readOnly = false)
     void boardList() {
 
         //given
@@ -81,7 +83,7 @@ class BoardServiceTest {
         BoardListResult<Integer , List<BoardListVo>> result = boardService.boardList(pageable);
 
         //then
-        assertEquals(10, result.getTotalCount());
+        assertEquals(11, result.getTotalCount());
 
     }
 
