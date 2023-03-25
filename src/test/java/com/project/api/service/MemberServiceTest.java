@@ -125,7 +125,7 @@ class MemberServiceTest {
         PageRequest pageable = PageRequest.of(0, 10);
         // when
         ListResult allList = memberService.findAllList(pageable);
-        System.out.println(allList.getResult());
+
 
         // then
         assertEquals(2, allList.getTotalCount());
