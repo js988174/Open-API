@@ -4,9 +4,9 @@ import com.project.api.config.jwt.JwtTokenProvider;
 import com.project.api.crypto.PasswordEncoderCustom;
 import com.project.api.entity.Member;
 import com.project.api.repository.MemberRepository;
-import com.project.api.vo.ListResult;
+import com.project.api.response.BoardListResult;
+import com.project.api.response.MemberListResult;
 import com.project.api.vo.MemberVo;
-import com.project.api.vo.UserDetailDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Rollback;
 
 import java.io.IOException;
@@ -124,7 +123,7 @@ class MemberServiceTest {
 
         PageRequest pageable = PageRequest.of(0, 10);
         // when
-        ListResult allList = memberService.findAllList(pageable);
+        MemberListResult allList = memberService.findAllList(pageable);
 
 
         // then

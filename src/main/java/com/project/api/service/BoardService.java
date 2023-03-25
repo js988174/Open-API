@@ -6,12 +6,11 @@ import com.project.api.exception.BoardNotFound;
 import com.project.api.repository.BoardRepository;
 import com.project.api.vo.BoardListVo;
 import com.project.api.vo.BoardVo;
-import com.project.api.vo.ListResult;
+import com.project.api.response.BoardListResult;
 import com.project.api.vo.UserDetailDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -36,9 +35,9 @@ public class BoardService {
         return board.getBoardNo();
     }
 
-    public ListResult boardList(Pageable pageable){
+    public BoardListResult boardList(Pageable pageable){
         Page<Board> boardVoList = boardRepository.findAll(pageable);
-        ListResult<Integer , List<BoardListVo>> result = new ListResult<>(boardVoList.getTotalPages() ,
+        BoardListResult<Integer , List<BoardListVo>> result = new BoardListResult<>(boardVoList.getTotalPages() ,
                 boardVoList.toList().stream().map(BoardListVo::new)
                         .collect(Collectors.toList()));
 
