@@ -51,18 +51,25 @@ public class BoardService {
        boardRepository.findById(id);
         return board;
     }
-    public void deleteBoard(Long id){
+    public Long deleteBoard(Long id){
         Board board = boardRepository.findById(id)
                 .orElseThrow(BoardNotFound::new);
-
+        Member member =
+                ((UserDetailDTO) SecurityContextHolder.getContext()
+                        .getAuthentication().getPrincipal()).getMember();
+        
+        if(!member.getId().equals(board.getMember().getId())){
+            throw new RuntimeException("해당 글을 삭제 할 권한이 없습니다.");
+        }
         board.setDelete(true);
+        return board.getBoardNo();
     }
     @Transactional
-    public void updateBoard(Long id, BoardVo boardVo){
+    public Long updateBoard(Long id, BoardVo boardVo){
         Board board = boardRepository.findById(id)
                 .orElseThrow(BoardNotFound::new);
 
         board.update(boardVo.getTitle(),board.getContent());
-
+        return board.getBoardNo();
     }
 }

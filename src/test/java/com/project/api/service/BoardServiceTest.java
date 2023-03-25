@@ -6,6 +6,7 @@ import com.project.api.response.BoardListResult;
 import com.project.api.vo.BoardListVo;
 import com.project.api.vo.BoardVo;
 import com.project.api.vo.MemberVo;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -43,6 +44,10 @@ class BoardServiceTest {
         String token = memberService.signin(memberVo);
         Authentication authentication = jwtTokenProvider.getAuthentication(token);
         SecurityContextHolder.getContext().setAuthentication(authentication);
+    }
+    @Before
+    void deleteAll(){
+
     }
     @Test
     @Rollback
@@ -90,10 +95,48 @@ class BoardServiceTest {
 
 
     @Test
+    @Rollback
+    @Transactional
     public void deleteBoard() {
+
+        //given
+        login();
+        BoardVo boardVo = new BoardVo();
+        boardVo.setTitle("테스트 1글 제목");
+        boardVo.setContent("테스트 1글 내용");
+        Long id = boardService.saveBoard(boardVo);
+
+        //when
+        Long id2 = boardService.deleteBoard(id);
+        Board board = boardService.findBoard(id2);
+        //then
+        assertEquals(id,id2);
+        assertTrue(board.isDeleteFlag());
     }
 
     @Test
+    @Rollback
+    @Transactional
     public void updateBoard() {
+
+
+        login();
+        BoardVo boardVo = new BoardVo();
+        boardVo.setTitle("테스트 1글 제목");
+        boardVo.setContent("테스트 1글 내용");
+        Long id = boardService.saveBoard(boardVo);
+        BoardVo boardVo2 = new BoardVo();
+        boardVo2.setTitle("테스트 1글 제목 수정");
+        boardVo2.setContent("테스트 1글 내용 수정");
+
+        //when
+        Long id2 = boardService.updateBoard(id , boardVo2);
+        Board findBoard = boardService.findBoard(id);
+
+
+        //then
+        assertEquals(id,id2);
+        assertEquals(findBoard.getTitle(),boardVo2.getTitle());
+        assertEquals(findBoard.getContent(),boardVo2.getContent());
     }
 }
