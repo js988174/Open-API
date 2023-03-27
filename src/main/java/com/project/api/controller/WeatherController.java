@@ -1,11 +1,12 @@
 package com.project.api.controller;
 
 
-import com.project.api.apiclass.WeatherAPI;
-import com.project.api.vo.MemberVo;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
@@ -16,6 +17,8 @@ import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,9 +27,15 @@ public class WeatherController {
 
     @GetMapping("/weather")
     public Object weather() throws Exception {
-        String apiURL = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst";
+        String apiURL = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst";
         String authKey = "bLT%2FnnGz655vMRYLmYPnULY15PcoXmH5TuMR0wOlyZhly6RlmQ%2Bcayy4f7yNYOVfbCvOxhxPv9pepFRdMeVkvw%3D%3D";
-        String baseDate = "20230302";
+
+        //TODO 임시
+        SimpleDateFormat DateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        Date currentDate = new Date();
+
+        String baseDate = StringUtils.substring(DateFormat.format(currentDate),0,8);
+
         String baseTime = "0500";
         String nx = "55"; // 위도
         String ny = "127";  // 경도
@@ -67,7 +76,48 @@ public class WeatherController {
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject =(JSONObject) jsonParser.parse(sb.toString());
 
-
+//        String result= sb.toString();
+//
+//        //=======이 밑에 부터는 json에서 데이터 파싱해 오는 부분이다=====//
+//
+//        // response 키를 가지고 데이터를 파싱
+//        JSONObject jsonObj_1 = new JSONObject(result);
+//        String response = jsonObj_1.getString("response");
+//
+//        // response 로 부터 body 찾기
+//        JSONObject jsonObj_2 = new JSONObject(response);
+//        String body = jsonObj_2.getString("body");
+//
+//        // body 로 부터 items 찾기
+//        JSONObject jsonObj_3 = new JSONObject(body);
+//        String items = jsonObj_3.getString("items");
+//        Log.i("ITEMS",items);
+//
+//        // items로 부터 itemlist 를 받기
+//        JSONObject jsonObj_4 = new JSONObject(items);
+//        JSONArray jsonArray = jsonObj_4.getJSONArray("item");
+//
+//        for(int i=0;i<jsonArray.length();i++){
+//            jsonObj_4 = jsonArray.getJSONObject(i);
+//            String fcstValue = jsonObj_4.getString("fcstValue");
+//            String category = jsonObj_4.getString("category");
+//
+//            if(category.equals("SKY")){
+//                weather = "현재 날씨는 ";
+//                if(fcstValue.equals("1")) {
+//                    weather += "맑은 상태로";
+//                }else if(fcstValue.equals("2")) {
+//                    weather += "비가 오는 상태로 ";
+//                }else if(fcstValue.equals("3")) {
+//                    weather += "구름이 많은 상태로 ";
+//                }else if(fcstValue.equals("4")) {
+//                    weather += "흐린 상태로 ";
+//                }
+//            }
+//
+//            if(category.equals("T3H") || category.equals("T1H")){
+//                tmperature = "기온은 "+fcstValue+"℃ 입니다.";
+//            }
 
         return jsonObject;
 
