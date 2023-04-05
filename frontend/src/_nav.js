@@ -52,6 +52,11 @@ export default [
         name: 'Movie',
         to: '/movie',
       },
+      {
+        component: 'CNavItem',
+        name: 'WebRTC',
+        to: '/webrtc',
+      },
     ],
   },
   {

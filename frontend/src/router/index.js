@@ -72,6 +72,11 @@ const routes = [
             name: 'BoardWrite',
             component: () => import('@/views/pages/board/BoardWrite'),
           },
+          {
+            path: 'webrtc',
+            name: 'webrtc',
+            component: () => import('@/views/pages/Webrtc'),
+          },
         ],
       },
     ],

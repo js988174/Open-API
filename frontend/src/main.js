@@ -15,6 +15,7 @@ app.config.globalProperties.$axios = axios
 app.use(store)
 app.use(router)
 app.use(CoreuiVue)
+
 app.provide('icons', icons)
 app.component('CIcon', CIcon)
 app.component('DocsExample', DocsExample)
