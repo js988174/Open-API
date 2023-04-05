@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted() {
-    this.username = prompt('닉네임을 입력하세요:')
+    prompt('닉네임을 입력하ss세요:')
     this.ws = new WebSocket('ws://localhost:8086/chat')
     this.ws.onmessage = (event) => {
       this.messages.push(JSON.parse(event.data))
@@ -36,8 +36,7 @@ export default {
     send() {
       if (this.message !== '') {
         const message = {
-          username: this.username,
-          text: this.message,
+          content: this.message,
         }
         this.ws.send(JSON.stringify(message))
         this.message = ''
