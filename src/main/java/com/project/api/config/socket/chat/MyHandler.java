@@ -1,4 +1,4 @@
-package com.project.api.chat;
+package com.project.api.config.socket.chat;
 
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
