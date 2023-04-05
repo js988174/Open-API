@@ -80,7 +80,6 @@ class BoardServiceTest {
             boardVo.setTitle("테스트 "+i+"글 제목");
             boardVo.setContent("테스트"+i+"글 내용");
 
-            System.out.println(boardVo);
             boardService.saveBoard(boardVo);
         }
         PageRequest pageable = PageRequest.of(0, 9);
@@ -130,7 +129,6 @@ class BoardServiceTest {
         boardVo2.setBoardNo(id);
         boardVo2.setContent("테스트 1글 내용 수정");
         boardVo2.setTitle("테스트 1글 제목 수정");
-        System.out.println(boardVo2.getContent());
         //when
         boardService.updateBoard(boardVo2);
 
