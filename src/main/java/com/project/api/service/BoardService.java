@@ -77,6 +77,6 @@ public class BoardService {
                 .build();
 
 
-        board.update(boardEditorVo);
+        board.update(boardEditorVo.getTitle(),boardEditorVo.getContent());
     }
 }

@@ -41,9 +41,9 @@ public class Board {
         this.member = member;
         this.deleteFlag = false;
     }
-    public void update(BoardEditorVo boardEditorVo) {
-        this.title = boardEditorVo.getTitle();
-        this.content = boardEditorVo.getContent();
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
     public void setDelete(boolean delete) {
         this.deleteFlag = delete;
