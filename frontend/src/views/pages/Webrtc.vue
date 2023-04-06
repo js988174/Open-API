@@ -1,7 +1,10 @@
 <template>
   <div id="app">
+    유저이름:
+    <input v-model="userName" type="text" />
     내용: <input v-model="message" type="text" @keyup="sendMessage" />
     <div v-for="(item, idx) in recvList" :key="idx">
+      <h3>유저이름: {{ item.userName }}</h3>
       <h3>내용: {{ item.content }}</h3>
     </div>
   </div>
@@ -15,9 +18,8 @@ export default {
   name: 'Webrtc',
   data() {
     return {
-      messages: [],
+      userName: '',
       message: '',
-      username: '',
       recvList: [],
     }
   },
@@ -44,7 +46,7 @@ export default {
         const msg = {
           content: this.message,
         }
-        this.stompClient.send('/receive', JSON.stringify(msg), {})
+        this.stompClient.send('/chat', JSON.stringify(msg), {})
       }
     },
     connect() {
