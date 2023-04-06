@@ -47,10 +47,10 @@ export default {
   },
   methods: {
     myInfo() {
-      this.$axios.get('/api/member/loginInfo').then((response) => {
-        this.loginInfo = response.data.result.id
-        console.log(this.loginInfo.username)
-      })
+      // this.$axios.get('/api/member/loginInfo').then((response) => {
+      //   this.loginInfo = response.data.result.id
+      //   console.log(this.loginInfo.username)
+      // })
     },
   },
 }

@@ -15,8 +15,12 @@ public class WebSocketController {
     @SendTo("/topic")
     public MessageVo sendMessage(@Payload MessageVo message, SimpMessageHeaderAccessor headerAccessor) {
         System.out.println("왔다 채팅");
-        System.out.println(message.getContent());
-        headerAccessor.getSessionAttributes().put("username", message.getSender());
-        return message;
+        String userName = message.getUserName();
+        String content = message.getContent();
+
+        MessageVo result = new MessageVo(userName, content);
+
+//        headerAccessor.getSessionAttributes().put("username", message.getSender());
+        return result;
     }
 }

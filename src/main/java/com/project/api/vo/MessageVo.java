@@ -9,9 +9,10 @@ import lombok.RequiredArgsConstructor;
 @Data
 @AllArgsConstructor
 public class MessageVo {
+        @JsonProperty("userName")
+        private String userName;
+
         @JsonProperty("content")
         private String content;
 
-        @JsonProperty("sender")
-        private String sender;
 }
