@@ -17,9 +17,7 @@ public class WebSocketController {
         System.out.println("왔다 채팅");
         System.out.println("웹소켓컨트롤러");
 
-        //MessageVo result = new MessageVo(userName, content);
 
-//        headerAccessor.getSessionAttributes().put("username", message.getSender());
         return message;
     }
 }
