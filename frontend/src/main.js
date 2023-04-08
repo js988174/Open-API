@@ -9,7 +9,7 @@ import CIcon from '@coreui/icons-vue'
 import { iconsSet as icons } from '@/assets/icons'
 import DocsExample from '@/components/DocsExample'
 
-axios.defaults.baseURL = 'http://localhost:8086'
+axios.defaults.baseURL = 'http://3.34.40.128:8086'
 const app = createApp(App)
 app.config.globalProperties.$axios = axios
 app.use(store)
