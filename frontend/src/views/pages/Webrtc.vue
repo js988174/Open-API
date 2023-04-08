@@ -44,6 +44,7 @@ export default {
       console.log('Send message:' + this.message)
       if (this.stompClient && this.stompClient.connected) {
         const msg = {
+          userName: this.userName,
           content: this.message,
         }
         this.stompClient.send('/chat', JSON.stringify(msg), {})
