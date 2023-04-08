@@ -15,8 +15,7 @@ public class WebSocketController {
     @SendTo("/topic")
     public MessageVo sendMessage(@Payload MessageVo message, SimpMessageHeaderAccessor headerAccessor) {
         System.out.println("왔다 채팅");
-        String userName = message.getUserName();
-        String content = message.getContent();
+        System.out.println("웹소켓컨트롤러");
 
         //MessageVo result = new MessageVo(userName, content);
 

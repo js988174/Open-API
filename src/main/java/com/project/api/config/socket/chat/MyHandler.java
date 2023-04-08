@@ -8,6 +8,8 @@ public class MyHandler extends TextWebSocketHandler {
 
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) {
+        System.out.println("handleTextMessage 오나요?");
+
         String payload = message.getPayload();
         System.out.println(payload);
         // 클라이언트로부터 받은 메시지 처리
