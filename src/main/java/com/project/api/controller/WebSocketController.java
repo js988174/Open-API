@@ -18,9 +18,7 @@ public class WebSocketController {
         String userName = message.getUserName();
         String content = message.getContent();
 
-        //MessageVo result = new MessageVo(userName, content);
 
-//        headerAccessor.getSessionAttributes().put("username", message.getSender());
         return message;
     }
 }
