@@ -12,15 +12,13 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        System.out.println("configureMessageBroker에 오나요?");
         config.enableSimpleBroker("/topic");
 
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        System.out.println("registerStompEndpoints 오나요?");
-        registry.addEndpoint("/")
+        registry.addEndpoint("/gs-guide-websocket")
                 .setAllowedOriginPatterns("*")
                 .withSockJS();
     }
